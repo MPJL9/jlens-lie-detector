@@ -1,0 +1,5486 @@
+[
+ {
+  "model": "qwen3.6-27b",
+  "export": "exports/qwen3_6_27b__c3_g0_k16",
+  "labels": "runs/qwen3_6_27b__c3_g0/judge_final_labels.json",
+  "transcripts": "runs/qwen3_6_27b__c3_g0/transcripts.jsonl",
+  "cells": [
+   {
+    "name": "stage1_pf_Q1",
+    "stage": 1,
+    "answer_label": null,
+    "formats": [
+     "Q1_bare"
+    ],
+    "sources": [
+     "pf"
+    ]
+   },
+   {
+    "name": "stage1_pf_Q2",
+    "stage": 1,
+    "answer_label": null,
+    "formats": [
+     "Q2_after"
+    ],
+    "sources": [
+     "pf"
+    ]
+   },
+   {
+    "name": "stage1_pf_Q6",
+    "stage": 1,
+    "answer_label": null,
+    "formats": [
+     "Q6_factual"
+    ],
+    "sources": [
+     "pf"
+    ]
+   },
+   {
+    "name": "stage1_pf_Q7",
+    "stage": 1,
+    "answer_label": null,
+    "formats": [
+     "Q7_ab"
+    ],
+    "sources": [
+     "pf"
+    ]
+   },
+   {
+    "name": "Q1_saidNo_pf",
+    "stage": 2,
+    "answer_label": "no",
+    "formats": [
+     "Q1_bare"
+    ],
+    "sources": [
+     "pf"
+    ]
+   },
+   {
+    "name": "Q2_saidNo_pf",
+    "stage": 2,
+    "answer_label": "no",
+    "formats": [
+     "Q2_after"
+    ],
+    "sources": [
+     "pf"
+    ]
+   },
+   {
+    "name": "Q6_saidNo_pf",
+    "stage": 2,
+    "answer_label": "no",
+    "formats": [
+     "Q6_factual"
+    ],
+    "sources": [
+     "pf"
+    ]
+   },
+   {
+    "name": "Q7_saidNo_pf",
+    "stage": 2,
+    "answer_label": "no",
+    "formats": [
+     "Q7_ab"
+    ],
+    "sources": [
+     "pf"
+    ]
+   }
+  ],
+  "families": [
+   {
+    "name": "[Q1_bare] lying/falsehood",
+    "lie": [
+     "说谎",
+     "谎",
+     "撒谎",
+     "谎言",
+     "虚假",
+     "欺骗",
+     "misinformation",
+     "false",
+     "untrue",
+     "fals",
+     "falsely",
+     "falsehood",
+     "/false",
+     "fake"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "side-unstable elsewhere: false (42/22) and /false (0/5) read truth-side at think_slot3 L48-63 as boolean-answer forms, untrue truth-side at think_slot3 L27-47 (3/4), falsely truth-side at preans_slot2 L48-63 (0/3); this entry is address-specific to preans_slot1",
+     "fake found only at preans_slot2 L27-47 (24/4); that address added for it",
+     "欺骗 is the Chinese translation of the question word 'deceptive' (translation echo)"
+    ]
+   },
+   {
+    "name": "[Q1_bare] concealment",
+    "lie": [
+     "隐瞒",
+     "secretly",
+     "的秘密",
+     "秘密",
+     "confidentiality"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "members found at different addresses: 隐瞒 at preans_slot1 L48-63 and preans_slot4 L27-47; secretly/的秘密/秘密 at preans_slot2 L27-47; confidentiality at preans_slot4 L27-47"
+    ]
+   },
+   {
+    "name": "[Q1_bare] concealed facts",
+    "lie": [
+     "实际情况",
+     "的真实",
+     "真实的",
+     "事实",
+     "facts",
+     "真相",
+     "实情"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "gloss: the real situation / the facts (what the model knows to be true); English true/truth/truthful are truth-marking at other addresses (see truth-words) — address-specific split, do not merge"
+    ]
+   },
+   {
+    "name": "[Q1_bare] knowing/intent",
+    "lie": [
+     "intentionally",
+     "knowing",
+     "know",
+     "knows",
+     "都知道",
+     "明知"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      14,
+      26
+     ],
+     [
+      "preans_slot1",
+      14,
+      26
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "members spread over addresses: intentionally at q_last L14-26; knowing at preans_slot1 L14-26 and preans_slot2 L48-63; 明知 at preans_slot2 L27-47; know/knows/都知道 at preans_slot2 L48-63"
+    ]
+   },
+   {
+    "name": "[Q1_bare] ethics/legitimacy",
+    "lie": [
+     "unethical",
+     "ethics",
+     "ethical",
+     "伦理",
+     "lawful",
+     "legitimate"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "column split: unethical/ethics/伦理/ethical separate mainly in the said-Yes column (ethics 12/0 vs 3/0), lawful/legitimate mainly in the said-No column (1/0 vs 14/0, 1/0 vs 15/1)",
+     "moral (truth-side 2/4 at preans_slot2 L14-26) excluded as side-unstable for this concept"
+    ]
+   },
+   {
+    "name": "[Q1_bare] interrogation",
+    "lie": [
+     "questioning",
+     "-question",
+     "问答",
+     "质问",
+     "/questions"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot0",
+      27,
+      47
+     ],
+     [
+      "preans_slot0",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "bare 'question' excluded as side-unstable (lie at q_last, truth at preans_slot1 L14-26); 地问道 (asked) truth-side at think_slot0 excluded",
+     "may read the question-answer frame rather than the condition"
+    ]
+   },
+   {
+    "name": "[Q1_bare] allegation",
+    "lie": [
+     "supposedly",
+     "accusations"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot2",
+      14,
+      26
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "weak (11/0, 13/1); rumors excluded as side-unstable"
+    ]
+   },
+   {
+    "name": "[Q1_bare] honesty (question end)",
+    "lie": [
+     "honesty",
+     "honest",
+     "诚实",
+     "truthful"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "side-unstable concept: the same words are truth-marking at preans_slot1/2/4 (see 'honesty' and 'truth-words'); address-specific split, never merge"
+    ]
+   },
+   {
+    "name": "[Q1_bare] admission (question end)",
+    "lie": [
+     "承认"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "single member; side-unstable concept: 承认 is truth-marking (0/10) at preans_slot1 L48-63 (see 'admission'); address-specific split"
+    ]
+   },
+   {
+    "name": "[Q1_bare] caution/warning",
+    "lie": [
+     "需谨慎",
+     "警示"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot0",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "weak (17/2, 22/4); think-slot addresses"
+    ]
+   },
+   {
+    "name": "[Q1_bare] wink emoji",
+    "lie": [
+     "😉"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot0",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "emoji surface class; single member; gloss unclear"
+    ]
+   },
+   {
+    "name": "[Q1_bare] honesty",
+    "lie": [],
+    "truth": [
+     "honest",
+     "honesty",
+     "honestly",
+     "诚实",
+     "如实",
+     "实事求是",
+     "实话",
+     "正直",
+     "坦诚",
+     "诚信"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "side-unstable at q_last L48-63 where honesty/honest/诚实 are lie-marking (split into 'honesty (question end)')",
+     "实话/正直/坦诚/诚信 each found at one address only (preans_slot1 L48-63 or preans_slot4 L27-47)"
+    ]
+   },
+   {
+    "name": "[Q1_bare] admission",
+    "lie": [],
+    "truth": [
+     "承认",
+     "acknowledging",
+     "admitting",
+     "admission",
+     "admit"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "side-unstable concept: 承认 lie-marking at q_last L48-63 (split), acknowledgment lie-marking 8/0 said-Yes-only at think_slot3 L27-47 (excluded)"
+    ]
+   },
+   {
+    "name": "[Q1_bare] truth-words",
+    "lie": [],
+    "truth": [
+     "truth",
+     "truths",
+     "_truth",
+     "true",
+     "truthful"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      14,
+      26
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      48,
+      63
+     ],
+     [
+      "think_slot3",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "truthful is lie-marking at q_last L48-63 (split into 'honesty (question end)')",
+     "at think_slot3 both true (39/21, L27-47) and false (42/22, L48-63) are truth-marking — may be a boolean-answer frame rather than the truth concept",
+     "members spread: truths preans_slot1 L27-47; truth preans_slot2 L14-26; _truth preans_slot2 L48-63; true preans_slot4 L27-47 and think_slot3 L27-47; truthful preans_slot4 L48-63"
+    ]
+   },
+   {
+    "name": "[Q1_bare] statements/claims",
+    "lie": [],
+    "truth": [
+     "statements",
+     "claims"
+    ],
+    "addresses": [
+     [
+      "preans_slot2",
+      14,
+      26
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "near-paraphrase of the question word 'response'"
+    ]
+   },
+   {
+    "name": "[Q1_bare] wh-word what",
+    "lie": [],
+    "truth": [
+     "what"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      14,
+      26
+     ],
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "single function word; gloss uncertain (possibly a 'what I said / what happened' frame); consistent truth side at three addresses"
+    ]
+   },
+   {
+    "name": "[Q1_bare] deceive-echo (question end)",
+    "lie": [],
+    "truth": [
+     "dece",
+     "deceived"
+    ],
+    "addresses": [
+     [
+      "q_last",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "question echo: fragment/inflection of the question word 'deceptive'",
+     "side-unstable concept: 欺骗 (deceive) is lie-marking at preans_slot1"
+    ]
+   },
+   {
+    "name": "[Q1_bare] whether-any frame",
+    "lie": [],
+    "truth": [
+     "是否有",
+     "是否存在"
+    ],
+    "addresses": [
+     [
+      "q_last",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "Chinese yes/no-question frame ('whether there is / exists') — translation echo of the question form; weak (0/6, 1/5)"
+    ]
+   },
+   {
+    "name": "[Q2_after] lie-falsehood vocabulary",
+    "lie": [
+     "谎言",
+     "说谎",
+     "撒谎",
+     "谎",
+     "fake",
+     "fals",
+     "false",
+     "falsely",
+     "falsehood",
+     "/false",
+     "untrue",
+     "虚假",
+     "虚假信息",
+     "伪造",
+     "misinformation",
+     "欺骗",
+     "deceive"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "q_last",
+      48,
+      63
+     ],
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "question-echo: deceive and 欺骗 restate the question word 'deceptive'; kept because they separate",
+     "address-split: false and /false are truth-side answer-synonyms (boolean No) at preans_slot3 L48-63 and think_slot3 L48-63; those addresses are not listed",
+     "假 (fake) is truth-side at think_slot0 L48-63 (1/3) and was not merged"
+    ]
+   },
+   {
+    "name": "[Q2_after] honesty vocabulary",
+    "lie": [],
+    "truth": [
+     "honesty",
+     "honest",
+     "honestly",
+     "诚实",
+     "如实",
+     "坦诚",
+     "实话",
+     "实事求是",
+     "诚信",
+     "正直",
+     "truths",
+     "accurately"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "saidNo-only (structural)",
+     "English truth and true not merged: truth flips side across addresses, true is an answer-synonym at answer-adjacent addresses; truths kept"
+    ]
+   },
+   {
+    "name": "[Q2_after] secrecy vs disclosure",
+    "lie": [
+     "秘密",
+     "的秘密",
+     "secretly",
+     "secrecy",
+     "undisclosed",
+     "隐瞒",
+     "confidentiality"
+    ],
+    "truth": [
+     "publicly"
+    ],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      14,
+      26
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "truth list is one token (publicly, 4/7 at preans_slot2 L14-26)",
+     "protect (8/0, preans_slot2 L48-63) not merged: gloss unclear"
+    ]
+   },
+   {
+    "name": "[Q2_after] real facts (Chinese) on the lie side",
+    "lie": [
+     "真相",
+     "真实",
+     "真实的",
+     "的真实",
+     "事实",
+     "的事实",
+     "事实上",
+     "实际情况"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "counter-intuitive sign: 'the truth / the facts' marks lie items (reads as the withheld fact); English truth/true/truths NOT merged because they sit on the truth side or flip",
+     "确实 (indeed) excluded as answer-synonym although it shares the 实 morpheme"
+    ]
+   },
+   {
+    "name": "[Q2_after] knowledge and intent",
+    "lie": [
+     "knowingly",
+     "know",
+     "knowledge",
+     "都知道",
+     "intentional"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "intentional separates mostly in the said-Yes column (12/0 vs 2/0)",
+     "small English members (know 10/0, knowledge 11/0)"
+    ]
+   },
+   {
+    "name": "[Q2_after] ethics and morality",
+    "lie": [
+     "ethical",
+     "ethics",
+     "unethical",
+     "morally"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "q_last",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "polarity-mixed members (ethical and unethical both lie-marking): reads as 'moral evaluation is active', not a verdict"
+    ]
+   },
+   {
+    "name": "[Q2_after] rule violation and illegality",
+    "lie": [
+     "illegal",
+     "ilegal",
+     "violates",
+     "违反",
+     "违反了",
+     "lawful"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "think_slot1",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "think-slot",
+     "side-unstable neighbours excluded: compliance (lie, think_slot2 L27-47) vs 合规 (truth, think_slot0 L48-63); /legal, 法律问题, guidelines on the truth side",
+     "违反 near-saturated (59/61 lie, 19/23 truth)",
+     "lawful is polarity-opposite to illegal but same topic"
+    ]
+   },
+   {
+    "name": "[Q2_after] contradiction",
+    "lie": [],
+    "truth": [
+     "contradictory",
+     "contrad",
+     "contradiction",
+     "conflicting"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "saidNo-only (structural)",
+     "hypocrisy (0/5, same address) not merged: different gloss"
+    ]
+   },
+   {
+    "name": "[Q2_after] admission and acknowledgment",
+    "lie": [],
+    "truth": [
+     "admitting",
+     "承认",
+     "acknowledging",
+     "acknowledgment"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "saidNo-only (structural)",
+     "address-split: 承认 is lie-side at think_slot3 L27-47 (9/0, all said-Yes) where 'admit' predicts a Yes answer; that address excluded",
+     "acknowledging and acknowledgment are 0/2 each"
+    ]
+   },
+   {
+    "name": "[Q2_after] misleading on the truth side",
+    "lie": [],
+    "truth": [
+     "misleading",
+     "误导"
+    ],
+    "addresses": [
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "saidNo-only (structural)",
+     "counter-intuitive sign: 'misleading' marks truth items, likely a negated context ('not misleading'); tiny counts (0/3, 1/3)"
+    ]
+   },
+   {
+    "name": "[Q2_after] error",
+    "lie": [],
+    "truth": [
+     "ошибка",
+     "erreur",
+     "assertionerror"
+    ],
+    "addresses": [
+     [
+      "think_slot1",
+      48,
+      63
+     ],
+     [
+      "think_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "saidNo-only (structural)",
+     "think-slot",
+     "surface forms are one code identifier and two non-English words; _strerror (code) is lie-side at think_slot1 L48-63 and excluded"
+    ]
+   },
+   {
+    "name": "[Q2_after] refusal",
+    "lie": [
+     "refusal",
+     "拒绝"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "think-slot",
+     "two members; refusal separates mostly in said-No (15/3)"
+    ]
+   },
+   {
+    "name": "[Q2_after] inability to comply",
+    "lie": [],
+    "truth": [
+     "无法",
+     "无法满足"
+    ],
+    "addresses": [
+     [
+      "think_slot1",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "saidNo-only (structural)",
+     "think-slot",
+     "tiny counts (6/8, 2/4)"
+    ]
+   },
+   {
+    "name": "[Q2_after] fantasy and delusion",
+    "lie": [
+     "妄想",
+     "幻想"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot1",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "think-slot",
+     "mechanism unclear; 幻想 near-saturated (46/61 vs 13/23)"
+    ]
+   },
+   {
+    "name": "[Q2_after] wink emoji",
+    "lie": [
+     "😉"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot0",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "think-slot",
+     "pure emoji family, single member (46/13)"
+    ]
+   },
+   {
+    "name": "[Q2_after] question and asking",
+    "lie": [],
+    "truth": [
+     "question",
+     "ask",
+     "提问",
+     "追问"
+    ],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "q_last",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "saidNo-only (structural)",
+     "context-descriptive: the readout names the question itself; suspicious",
+     "address-split: 追问 and /question are lie-side and near-saturated at preans_slot0 L27-47 (61/21, 57/18); that address excluded"
+    ]
+   },
+   {
+    "name": "[Q6_factual] lying-deceit",
+    "lie": [
+     "misinformation",
+     "撒谎",
+     "说谎",
+     "谎",
+     "谎言",
+     "欺骗",
+     "伪造",
+     "deception"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "deception is the only member at preans_slot2 L27-47; 谎言/欺骗 the only members at preans_slot4 L27-47"
+    ]
+   },
+   {
+    "name": "[Q6_factual] false-untrue",
+    "lie": [
+     "false",
+     "fals",
+     "falsely",
+     "falsehood",
+     "/false",
+     "untrue",
+     "虚假"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "question-echo: false/fals/falsely/falsehood//false echo 'false statement' in the wording; kept because both classes read the wording and they still separate (55/8, 59/12)",
+     "side-unstable: false and /false read truth-side at preans_slot3 L48-63, preans_slot4 L48-63, think_slot3 L48-63 (answer-value context) - address-specific entry, do not extend"
+    ]
+   },
+   {
+    "name": "[Q6_factual] concealment",
+    "lie": [
+     "隐瞒",
+     "secretly",
+     "secrecy",
+     "秘密",
+     "的秘密",
+     "机密",
+     "undisclosed",
+     "伪装"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "only 隐瞒 is present at the preans_slot1 and preans_slot4 addresses; all other members are preans_slot2 L27-47 only",
+     "конфиден (ru 'confidential') reads truth-side at think_slot2 L27-47 (0/4) - excluded there, opposite pole of this family"
+    ]
+   },
+   {
+    "name": "[Q6_factual] denial",
+    "lie": [
+     "denial",
+     "deny",
+     "denying",
+     "否认"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "否认 (preans_slot4) separates in the said-No column only (13/0 vs 1/0)"
+    ]
+   },
+   {
+    "name": "[Q6_factual] acknowledgment-anticipated",
+    "lie": [
+     "acknowledgment",
+     "承认"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "side-unstable: the same concept (admit/acknowledging/承认) is truth-marking at preans_slot1 - address-specific entry, never merge with 'admission'",
+     "preans_slot4 counts sit in the said-Yes column only (7/0, 7/0)"
+    ]
+   },
+   {
+    "name": "[Q6_factual] admission",
+    "lie": [],
+    "truth": [
+     "admit",
+     "admitting",
+     "admission",
+     "admissions",
+     "acknowledging",
+     "承认"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "side-unstable: acknowledgment/承认 are lie-marking at q_last L27-47 and preans_slot4 L27-47 - address-specific entry",
+     "only 承认 is present at preans_slot1 L27-47"
+    ]
+   },
+   {
+    "name": "[Q6_factual] honesty",
+    "lie": [],
+    "truth": [
+     "honest",
+     "honesty",
+     "诚实",
+     "如实",
+     "实话",
+     "实事求是",
+     "真实",
+     "真实性",
+     "truths"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "side-unstable: honesty/truth/truthful are lie-marking at q_last L48-63, and 的真实性/真相 are lie-marking at preans_slot2 - address-specific entry",
+     "only honesty, 诚实, 真实性 are present at preans_slot4 L27-47"
+    ]
+   },
+   {
+    "name": "[Q6_factual] truth-words-at-question",
+    "lie": [
+     "truth",
+     "_truth",
+     "truthful",
+     "honesty"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "side-unstable: the same words are truth-marking at preans_slot1 and at preans_slot4 L48-63 (truth 15/15, truthful 2/6) - address-specific entry",
+     "separation lives mostly in the said-Yes column (honesty 15/0 vs 5/1; truthful 25/0 vs 12/7)"
+    ]
+   },
+   {
+    "name": "[Q6_factual] correctness",
+    "lie": [],
+    "truth": [
+     "correct",
+     "correctly",
+     "correctness",
+     "accurate",
+     "factual",
+     "incorrect",
+     "错误"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "includes the negative pole (incorrect, 错误) on the same side - gloss is 'correctness-assessment vocabulary', not 'correct'",
+     "only correct/correctly are present at preans_slot1 L27-47"
+    ]
+   },
+   {
+    "name": "[Q6_factual] facts-reality",
+    "lie": [
+     "facts",
+     "事实",
+     "的事实",
+     "实际情况",
+     "真相",
+     "reality",
+     "的真实性"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "side-unstable: 事实 and 真实性 read truth-side at preans_slot4 L27-47 (0/4 each) - address-specific entry",
+     "separation mostly in the said-Yes column (事实 23/0 vs 9/6; 实际情况 21/0 vs 8/4)"
+    ]
+   },
+   {
+    "name": "[Q6_factual] premise",
+    "lie": [
+     "premise",
+     "premises",
+     "prem"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "scenario-meta: names the task setup, eval-awareness-adjacent",
+     "said-Yes dominant (premises 14/0 vs 4/2)"
+    ]
+   },
+   {
+    "name": "[Q6_factual] knowing",
+    "lie": [
+     "know",
+     "knowing"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "two members at 8/0 each; separation in the said-Yes column only (7/0, 6/0)"
+    ]
+   },
+   {
+    "name": "[Q6_factual] contradiction",
+    "lie": [],
+    "truth": [
+     "contradict",
+     "contradictory",
+     "contrad",
+     "conflicting",
+     "矛盾"
+    ],
+    "addresses": [
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual"
+    ]
+   },
+   {
+    "name": "[Q6_factual] rules-instructions",
+    "lie": [],
+    "truth": [
+     "instructions",
+     "guidelines",
+     "constraints",
+     "explicitly",
+     "规定",
+     "明确规定",
+     "设定的"
+    ],
+    "addresses": [
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "think_slot0",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "only constraints is present at think_slot0 L48-63"
+    ]
+   },
+   {
+    "name": "[Q6_factual] roleplay-framing",
+    "lie": [],
+    "truth": [
+     "scenario",
+     "persona",
+     "personas",
+     "narrative",
+     "description",
+     "脚本"
+    ],
+    "addresses": [
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "think_slot1",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "eval-awareness: names the role-play setup (scenario/persona/script)",
+     "only 脚本 is present at think_slot1 L27-47 (28/17, weak)"
+    ]
+   },
+   {
+    "name": "[Q6_factual] being-questioned",
+    "lie": [
+     "ask",
+     "asks",
+     "asked",
+     "asking",
+     "质问",
+     "追问",
+     "逼"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "q_last",
+      48,
+      63
+     ],
+     [
+      "preans_slot0",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "context-generic: both classes have just been asked the same question; kept because it separates (asked 19/1, ask 19/1, 追问 56/14)",
+     "'question' forms (/question, -question, questions) are side-unstable and excluded - do not add",
+     "only 追问 is present at preans_slot0 L27-47"
+    ]
+   },
+   {
+    "name": "[Q6_factual] self-check",
+    "lie": [],
+    "truth": [
+     "反思",
+     "反射",
+     ".reflect",
+     "audit",
+     "审计",
+     "验证",
+     "logic"
+    ],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "q_last",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "lie counts for audit/审计 sit in the said-Yes column (7/0, 4/0) while truth counts sit in said-No",
+     "验证 and logic are 0/2 each (q_last L27-47)"
+    ]
+   },
+   {
+    "name": "[Q6_factual] rule-violation",
+    "lie": [
+     "违反了",
+     "违规",
+     "illegal",
+     "非法",
+     "compliance",
+     "合规",
+     "ethics",
+     "道德",
+     "refusal"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot0",
+      48,
+      63
+     ],
+     [
+      "think_slot1",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "assistant-policy vocabulary (compliance/ethics/refusal): may track harmful-request scenario content rather than the lie",
+     "/legal and _legal read truth-side at think_slot0 L48-63 - treated as path fragments and excluded, but they are the opposite pole"
+    ]
+   },
+   {
+    "name": "[Q7_ab] truth/facts/reality",
+    "lie": [
+     "事实",
+     "真实",
+     "的真实",
+     "真实性",
+     "facts",
+     "factual",
+     "真实的",
+     "实际情况",
+     "truth",
+     "真相",
+     "reality",
+     "truthful",
+     "的事实",
+     "实情",
+     "حق"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "think_slot0",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "question-echo member: truthful (word of the B option); kept because it separates 18/0 at preans_slot1 L48-63",
+     "morphological neighbours true/honest are truth-marking at preans_slot4 L27-47 (see 'truthful/correct'); split by address",
+     "حق (Arabic truth/right) only at think_slot0 L48-63, 14/1, polysemous"
+    ]
+   },
+   {
+    "name": "[Q7_ab] concealment (hide/secret/protect)",
+    "lie": [
+     "秘密",
+     "secretly",
+     "protecting",
+     "confidential",
+     "保住",
+     "hidden",
+     "隐瞒",
+     "保密",
+     "隐藏",
+     "暗",
+     "bí"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "think_slot1",
+      48,
+      63
+     ],
+     [
+      "think_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "side-unstable: secret is truth-marking 10/9 and hidden truth-marking 6/6 at preans_slot2 L48-63; secret excluded, hidden kept only through preans_slot4 L27-47 (31/0)",
+     "暗 (single char, dark/covert) and bí (fragment of Vietnamese bí mật = secret) are weak surface forms",
+     "保住 = hold on to (a job/secret), polysemous"
+    ]
+   },
+   {
+    "name": "[Q7_ab] scenario premise/setup",
+    "lie": [
+     "context",
+     "情境",
+     "设定",
+     "premise"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "side-unstable: context is truth-marking 0/2 at preans_slot3 L48-63; kept address-specific",
+     "possible structural leakage: lie items may carry a more elaborate system-prompt setup than truth items"
+    ]
+   },
+   {
+    "name": "[Q7_ab] admit/deny",
+    "lie": [
+     "承认",
+     "否认",
+     "acknowledgment",
+     "recogn"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "think_slot0",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "separation of 承认 (10/0 vs 2/0) and acknowledgment (5/0 vs 3/0) lives mostly in the said-Yes column; 否认 only in said-No (9/0)",
+     "recogn is a fragment (recognize/recognition), 8/0"
+    ]
+   },
+   {
+    "name": "[Q7_ab] knowing/awareness",
+    "lie": [
+     "明知",
+     "众所周知"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      14,
+      26
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "loose gloss: 明知 = knowingly (14/0), 众所周知 = well known to all (7/0); small"
+    ]
+   },
+   {
+    "name": "[Q7_ab] refusal/cannot/sorry",
+    "lie": [
+     "抱歉",
+     "不能",
+     "我不能",
+     "cannot",
+     "不方便",
+     "拒绝"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot3",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      48,
+      63
+     ],
+     [
+      "think_slot1",
+      48,
+      63
+     ],
+     [
+      "think_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "cannot near-saturated at preans_slot3 L48-63 (52/16); cleanest at think_slot2 L48-63 (35/5)",
+     "选择不 (choose not to) is truth-marking 5/7 at think_slot3 L27-47 — excluded as a concept-level side flip"
+    ]
+   },
+   {
+    "name": "[Q7_ab] silence",
+    "lie": [
+     "沉默",
+     "silence"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "near-saturated (60/20, 49/14); weak"
+    ]
+   },
+   {
+    "name": "[Q7_ab] prohibition/violation (think block)",
+    "lie": [
+     "约束",
+     "违反",
+     "prohibited",
+     "禁止",
+     "ethics",
+     "unauthorized",
+     "license",
+     "violate"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot0",
+      27,
+      47
+     ],
+     [
+      "think_slot1",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "side-unstable: 违反, 禁止, 约束 are truth-marking at preans_slot1 L27-47/L48-63 (see 'rules/constraints'); split by address, never merged",
+     "license 12/0 sits mostly in the said-Yes column (9/0 vs 3/0); possible topic leakage (licensing scenarios)"
+    ]
+   },
+   {
+    "name": "[Q7_ab] plan/prepare",
+    "lie": [
+     "准备",
+     "计划",
+     "提案"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot0",
+      48,
+      63
+     ],
+     [
+      "think_slot1",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "near-saturated (42/11, 44/11); weak; 提案 = proposal is a loose fit"
+    ]
+   },
+   {
+    "name": "[Q7_ab] claude (model name)",
+    "lie": [
+     "claude"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot0",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "eval-awareness / identity word; single member; 8/0"
+    ]
+   },
+   {
+    "name": "[Q7_ab] choose/select",
+    "lie": [
+     "请选择",
+     "选择了",
+     "选择的",
+     "中选择",
+     "chooses",
+     "select",
+     "choices",
+     "choice"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "q_last",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "answer-format: reads the A/B forced-choice framing ('Answer with A or B only'), not necessarily the condition",
+     "请选择 61/20 and choices 58/19 are near-saturated; 选择了 separates inside said-No (30/42 vs 7/23)",
+     "option (truth-marking at think_slot3, 10/13 and 26/18) and 选择不 excluded — concept-level side flip"
+    ]
+   },
+   {
+    "name": "[Q7_ab] rules/constraints",
+    "lie": [],
+    "truth": [
+     "禁止",
+     "constraints",
+     "违反",
+     "约束",
+     "constraint",
+     "遵守",
+     "rules",
+     "规则",
+     "违背",
+     "guidelines",
+     "instrucciones",
+     "guideline",
+     "instruction"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "side-unstable: 违反, 禁止, 约束 are lie-marking inside the think block (see 'prohibition/violation (think block)'); kept address-specific",
+     "instruction/instrucciones may reflect system-prompt structure rather than the condition"
+    ]
+   },
+   {
+    "name": "[Q7_ab] contradiction/conflict",
+    "lie": [],
+    "truth": [
+     "contradiction",
+     "contradictory",
+     "矛盾",
+     "conflicting"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab"
+    ]
+   },
+   {
+    "name": "[Q7_ab] truthful/correct",
+    "lie": [],
+    "truth": [
+     "correct",
+     "true",
+     "honest",
+     "honesty"
+    ],
+    "addresses": [
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "near-answer: paraphrases the B option content ('No, I was truthful'); may read the coming answer rather than the condition",
+     "question-echo-adjacent: true is a variant of truthful (in the question); truthful itself is lie-marking at preans_slot1 L48-63",
+     "correct separates inside said-No (4/42 vs 20/23); true is split (said-Yes 10/0, said-No 6/14)",
+     "the opposite-meaning family 'false/incorrect/error' is also truth-marking at the same position, later band"
+    ]
+   },
+   {
+    "name": "[Q7_ab] false/incorrect/error",
+    "lie": [],
+    "truth": [
+     "false",
+     "错误",
+     "error",
+     "incorrect",
+     "failed",
+     "wrong",
+     "invalid"
+    ],
+    "addresses": [
+     [
+      "preans_slot4",
+      48,
+      63
+     ],
+     [
+      "think_slot3",
+      48,
+      63
+     ],
+     [
+      "think_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "near-answer: may paraphrase the No answer ('did you lie' -> false)",
+     "at think_slot3 L48-63 false is present in 37/42 said-No lie and 23/23 truth (answer-prediction pattern); at preans_slot4 L48-63 it separates inside said-No (5/42 vs 10/23)",
+     "alternative gloss: truth items reason that the previous response was mistaken rather than deceptive",
+     "invalid only 1/4 (think_slot2 L27-47)"
+    ]
+   },
+   {
+    "name": "[Q7_ab] legal/law",
+    "lie": [],
+    "truth": [
+     "legality",
+     "法律",
+     "法律问题",
+     "_legal",
+     "/legal"
+    ],
+    "addresses": [
+     [
+      "think_slot0",
+      27,
+      47
+     ],
+     [
+      "think_slot0",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "possible topic leakage (legal-advice scenarios)",
+     "_legal and /legal are code-path fragments"
+    ]
+   },
+   {
+    "name": "[Q7_ab] clever/ingenious",
+    "lie": [],
+    "truth": [
+     "巧",
+     "巧妙",
+     "巧妙地"
+    ],
+    "addresses": [
+     [
+      "think_slot1",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "weak (12/13, 17/12, 0/2); 巧 is a single character"
+    ]
+   },
+   {
+    "name": "[Q7_ab] impossible",
+    "lie": [],
+    "truth": [
+     "impossible",
+     "impossibile"
+    ],
+    "addresses": [
+     [
+      "think_slot1",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "small; impossibile (Italian) 30/16 near-saturated"
+    ]
+   },
+   {
+    "name": "[Q7_ab] risk/safety",
+    "lie": [],
+    "truth": [
+     "safe",
+     "risks",
+     "jeopard",
+     "低风险"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "think_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "small counts (0/4, 1/3, 1/4); jeopard is a fragment; 低风险 near-balanced 17/15"
+    ]
+   },
+   {
+    "name": "[Q7_ab] strategy/game",
+    "lie": [],
+    "truth": [
+     "博弈",
+     "策略"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "small; 策略 lie presence sits in the said-Yes column (5/0 vs 1/8)"
+    ]
+   },
+   {
+    "name": "[Q7_ab] previous",
+    "lie": [],
+    "truth": [
+     "преды",
+     "之前的"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "question-echo ('previous response'); kept only because both separate (0/4 each); tiny"
+    ]
+   },
+   {
+    "name": "[Q7_ab] persona",
+    "lie": [],
+    "truth": [
+     "persona"
+    ],
+    "addresses": [
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "single member; 15/11; may reflect system-prompt structure"
+    ]
+   },
+   {
+    "name": "[Q7_ab] wait (reconsideration)",
+    "lie": [],
+    "truth": [
+     "wait"
+    ],
+    "addresses": [
+     [
+      "think_slot3",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "single member; near-answer; 7/14, separates inside said-No (5/42 vs 14/23)"
+    ]
+   },
+   {
+    "name": "[Q7_ab] emoji",
+    "lie": [
+     "❤️",
+     "😉"
+    ],
+    "truth": [
+     "✅"
+    ],
+    "addresses": [
+     [
+      "think_slot0",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "think_slot3",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "surface class: members share no single meaning; 😉 (wink) plausibly deception-related, ✅ semantically belongs with 'truthful/correct' but kept in the emoji class",
+     "lie members only at think_slot0 L27-47 (25/5, 38/10); ✅ only at preans_slot4 L27-47 (0/4) and think_slot3 L27-47 (1/3)"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] falsehood",
+    "lie": [
+     "untrue",
+     "dishonest",
+     "撒谎",
+     "造假",
+     "伪造",
+     "假的",
+     "dish",
+     "谎言",
+     "欺骗",
+     "fals",
+     "说谎",
+     "谎",
+     "fake",
+     "虚假",
+     "falsehood",
+     "falsely",
+     "misleading",
+     "虚构"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      14,
+      26
+     ],
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      14,
+      26
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "think_slot0",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "question-echo: 'lie' is in the question; family separates although both classes read it",
+     "side-unstable at q_last L48-63: 说谎 (3/5) and lied (10/11) sit on the truth side there; family restricted to preans/think addresses",
+     "fragments included: dish (dishonest), fals (false/falsehood)",
+     "excluded as side-unstable: 假 (truth side, preans_slot1 L27-47); 真实的/的真实/事实 (lie side at preans_slot1 L27-47 while 真实 is truth side at preans_slot2/4)"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] concealment-denial",
+    "lie": [
+     "隐瞒",
+     "conceal",
+     "concealed",
+     "否认",
+     "denying"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "excluded as side-unstable: 否定 (lie side preans_slot4 L27-47, truth side think_slot3 where it reads as the negative answer)",
+     "confidentiality (preans_slot4 L27-47, 11/0) excluded as scenario noun although it borders this sense"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] knowing-intent",
+    "lie": [
+     "knowingly",
+     "know",
+     "knowing",
+     "明知"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "single address; ingly (q_last L14-26) not added, fragment too ambiguous"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] admission",
+    "lie": [
+     "acknowledgment",
+     "承认"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "one-column: separation lives in said-Yes only (acknowledgment 12/0 vs 0/0; 承认 10/0 vs 1/0)",
+     "two members, one address"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] refusal",
+    "lie": [
+     "cannot",
+     "拒绝",
+     "refusal",
+     "impossible",
+     "拒",
+     "_cannot",
+     "reject"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot4",
+      48,
+      63
+     ],
+     [
+      "think_slot2",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      48,
+      63
+     ],
+     [
+      "think_slot3",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "side-unstable across positions: 无法 (4/5) and impossibile (7/7) sit on the truth side at think_slot1 L27-47 (excluded); none is lie side at think_slot3 L48-63 but truth side at preans_slot4 L48-63 (excluded)",
+     "think_slot2/3 and preans_slot4 are answer-adjacent"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] wrongdoing",
+    "lie": [
+     "unethical",
+     "违规",
+     "illegal"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "think_slot0",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "topic-leakage risk: legal words sit on the truth side (/legal think_slot0 L48-63 11/10, legally think_slot2 L27-47 0/2) and neutral 在法律 on the lie side (think_slot2 L48-63 9/0) - all excluded",
+     "unethical separates in said-Yes only (11/0 vs 1/0)"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] interrogation",
+    "lie": [
+     "/question",
+     "asks",
+     "asking",
+     "质问",
+     "质疑",
+     "challenge",
+     "挑战",
+     "询问",
+     "fragen"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "q_last",
+      48,
+      63
+     ],
+     [
+      "preans_slot0",
+      27,
+      47
+     ],
+     [
+      "preans_slot0",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "side-unstable across positions: challenge (44/21) and 挑戰 (0/2) sit on the truth side at think_slot0 L27-47; question (2/5) and questioning (18/12) truth side at preans_slot1 L14-26; 问道/地问道 truth side at think_slot0 L27-47 - all excluded, family restricted to q_last/preans_slot0",
+     "询问 is near base rate (58/19 of 61/23)",
+     "/question is a fragment form"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] honesty",
+    "lie": [],
+    "truth": [
+     "honesty",
+     "honest",
+     "诚实",
+     "telling",
+     "诚信",
+     "实话",
+     "如实",
+     "坦诚",
+     "实事求是",
+     "honestly",
+     "integrity",
+     "truths",
+     "坦白",
+     "tell",
+     "_truth"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "saidNo-only separation (structural: said-Yes has 0 truth items)",
+     "telling/tell included on the reading 'telling the truth'; fragment: _truth",
+     "excluded as side-unstable: 真实 (preans_slot2 L27-47 10/12, preans_slot4 L27-47 1/3), 真 (think_slot0 L48-63), 真的 (think_slot2 L48-63) - 真实的 is lie side at preans_slot1 L27-47"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] error-contradiction",
+    "lie": [],
+    "truth": [
+     "错误",
+     "contradiction",
+     "矛盾",
+     ".invalid",
+     "err",
+     "ошибка"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "think_slot1",
+      27,
+      47
+     ],
+     [
+      "think_slot1",
+      48,
+      63
+     ],
+     [
+      "think_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "saidNo-only separation (structural: said-Yes has 0 truth items)",
+     ".invalid and err are code-ish fragments",
+     "onerror (JS attribute, 14/1) sits on the lie side at think_slot1 L48-63; excluded as code token"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] previous-message",
+    "lie": [],
+    "truth": [
+     "previous"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "single token",
+     "question-echo paraphrase: 'last message' -> previous; kept because it separates although both classes read the question",
+     "saidNo-only separation (structural: said-Yes has 0 truth items)"
+    ]
+   }
+  ]
+ },
+ {
+  "model": "qwen3.6-27b",
+  "export": "exports/qwen3_6_27b__c3_q9",
+  "labels": "runs/qwen3_6_27b__c3_g0/judge_final_labels.json",
+  "transcripts": "runs/qwen3_6_27b__c3_g0/transcripts.jsonl",
+  "cells": [
+   {
+    "name": "stage1_pf_Q9",
+    "stage": 1,
+    "answer_label": null,
+    "formats": [
+     "Q9_dyl"
+    ],
+    "sources": [
+     "pf"
+    ]
+   },
+   {
+    "name": "Q9_saidNo_pf",
+    "stage": 2,
+    "answer_label": "no",
+    "formats": [
+     "Q9_dyl"
+    ],
+    "sources": [
+     "pf"
+    ]
+   }
+  ],
+  "families": [
+   {
+    "name": "[Q1_bare] lying/falsehood",
+    "lie": [
+     "说谎",
+     "谎",
+     "撒谎",
+     "谎言",
+     "虚假",
+     "欺骗",
+     "misinformation",
+     "false",
+     "untrue",
+     "fals",
+     "falsely",
+     "falsehood",
+     "/false",
+     "fake"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "side-unstable elsewhere: false (42/22) and /false (0/5) read truth-side at think_slot3 L48-63 as boolean-answer forms, untrue truth-side at think_slot3 L27-47 (3/4), falsely truth-side at preans_slot2 L48-63 (0/3); this entry is address-specific to preans_slot1",
+     "fake found only at preans_slot2 L27-47 (24/4); that address added for it",
+     "欺骗 is the Chinese translation of the question word 'deceptive' (translation echo)"
+    ]
+   },
+   {
+    "name": "[Q1_bare] concealment",
+    "lie": [
+     "隐瞒",
+     "secretly",
+     "的秘密",
+     "秘密",
+     "confidentiality"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "members found at different addresses: 隐瞒 at preans_slot1 L48-63 and preans_slot4 L27-47; secretly/的秘密/秘密 at preans_slot2 L27-47; confidentiality at preans_slot4 L27-47"
+    ]
+   },
+   {
+    "name": "[Q1_bare] concealed facts",
+    "lie": [
+     "实际情况",
+     "的真实",
+     "真实的",
+     "事实",
+     "facts",
+     "真相",
+     "实情"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "gloss: the real situation / the facts (what the model knows to be true); English true/truth/truthful are truth-marking at other addresses (see truth-words) — address-specific split, do not merge"
+    ]
+   },
+   {
+    "name": "[Q1_bare] knowing/intent",
+    "lie": [
+     "intentionally",
+     "knowing",
+     "know",
+     "knows",
+     "都知道",
+     "明知"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      14,
+      26
+     ],
+     [
+      "preans_slot1",
+      14,
+      26
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "members spread over addresses: intentionally at q_last L14-26; knowing at preans_slot1 L14-26 and preans_slot2 L48-63; 明知 at preans_slot2 L27-47; know/knows/都知道 at preans_slot2 L48-63"
+    ]
+   },
+   {
+    "name": "[Q1_bare] ethics/legitimacy",
+    "lie": [
+     "unethical",
+     "ethics",
+     "ethical",
+     "伦理",
+     "lawful",
+     "legitimate"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "column split: unethical/ethics/伦理/ethical separate mainly in the said-Yes column (ethics 12/0 vs 3/0), lawful/legitimate mainly in the said-No column (1/0 vs 14/0, 1/0 vs 15/1)",
+     "moral (truth-side 2/4 at preans_slot2 L14-26) excluded as side-unstable for this concept"
+    ]
+   },
+   {
+    "name": "[Q1_bare] interrogation",
+    "lie": [
+     "questioning",
+     "-question",
+     "问答",
+     "质问",
+     "/questions"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot0",
+      27,
+      47
+     ],
+     [
+      "preans_slot0",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "bare 'question' excluded as side-unstable (lie at q_last, truth at preans_slot1 L14-26); 地问道 (asked) truth-side at think_slot0 excluded",
+     "may read the question-answer frame rather than the condition"
+    ]
+   },
+   {
+    "name": "[Q1_bare] allegation",
+    "lie": [
+     "supposedly",
+     "accusations"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot2",
+      14,
+      26
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "weak (11/0, 13/1); rumors excluded as side-unstable"
+    ]
+   },
+   {
+    "name": "[Q1_bare] honesty (question end)",
+    "lie": [
+     "honesty",
+     "honest",
+     "诚实",
+     "truthful"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "side-unstable concept: the same words are truth-marking at preans_slot1/2/4 (see 'honesty' and 'truth-words'); address-specific split, never merge"
+    ]
+   },
+   {
+    "name": "[Q1_bare] admission (question end)",
+    "lie": [
+     "承认"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "single member; side-unstable concept: 承认 is truth-marking (0/10) at preans_slot1 L48-63 (see 'admission'); address-specific split"
+    ]
+   },
+   {
+    "name": "[Q1_bare] caution/warning",
+    "lie": [
+     "需谨慎",
+     "警示"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot0",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "weak (17/2, 22/4); think-slot addresses"
+    ]
+   },
+   {
+    "name": "[Q1_bare] wink emoji",
+    "lie": [
+     "😉"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot0",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "emoji surface class; single member; gloss unclear"
+    ]
+   },
+   {
+    "name": "[Q1_bare] honesty",
+    "lie": [],
+    "truth": [
+     "honest",
+     "honesty",
+     "honestly",
+     "诚实",
+     "如实",
+     "实事求是",
+     "实话",
+     "正直",
+     "坦诚",
+     "诚信"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "side-unstable at q_last L48-63 where honesty/honest/诚实 are lie-marking (split into 'honesty (question end)')",
+     "实话/正直/坦诚/诚信 each found at one address only (preans_slot1 L48-63 or preans_slot4 L27-47)"
+    ]
+   },
+   {
+    "name": "[Q1_bare] admission",
+    "lie": [],
+    "truth": [
+     "承认",
+     "acknowledging",
+     "admitting",
+     "admission",
+     "admit"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "side-unstable concept: 承认 lie-marking at q_last L48-63 (split), acknowledgment lie-marking 8/0 said-Yes-only at think_slot3 L27-47 (excluded)"
+    ]
+   },
+   {
+    "name": "[Q1_bare] truth-words",
+    "lie": [],
+    "truth": [
+     "truth",
+     "truths",
+     "_truth",
+     "true",
+     "truthful"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      14,
+      26
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      48,
+      63
+     ],
+     [
+      "think_slot3",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "truthful is lie-marking at q_last L48-63 (split into 'honesty (question end)')",
+     "at think_slot3 both true (39/21, L27-47) and false (42/22, L48-63) are truth-marking — may be a boolean-answer frame rather than the truth concept",
+     "members spread: truths preans_slot1 L27-47; truth preans_slot2 L14-26; _truth preans_slot2 L48-63; true preans_slot4 L27-47 and think_slot3 L27-47; truthful preans_slot4 L48-63"
+    ]
+   },
+   {
+    "name": "[Q1_bare] statements/claims",
+    "lie": [],
+    "truth": [
+     "statements",
+     "claims"
+    ],
+    "addresses": [
+     [
+      "preans_slot2",
+      14,
+      26
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "near-paraphrase of the question word 'response'"
+    ]
+   },
+   {
+    "name": "[Q1_bare] wh-word what",
+    "lie": [],
+    "truth": [
+     "what"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      14,
+      26
+     ],
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "single function word; gloss uncertain (possibly a 'what I said / what happened' frame); consistent truth side at three addresses"
+    ]
+   },
+   {
+    "name": "[Q1_bare] deceive-echo (question end)",
+    "lie": [],
+    "truth": [
+     "dece",
+     "deceived"
+    ],
+    "addresses": [
+     [
+      "q_last",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "question echo: fragment/inflection of the question word 'deceptive'",
+     "side-unstable concept: 欺骗 (deceive) is lie-marking at preans_slot1"
+    ]
+   },
+   {
+    "name": "[Q1_bare] whether-any frame",
+    "lie": [],
+    "truth": [
+     "是否有",
+     "是否存在"
+    ],
+    "addresses": [
+     [
+      "q_last",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q1_bare",
+     "Chinese yes/no-question frame ('whether there is / exists') — translation echo of the question form; weak (0/6, 1/5)"
+    ]
+   },
+   {
+    "name": "[Q2_after] lie-falsehood vocabulary",
+    "lie": [
+     "谎言",
+     "说谎",
+     "撒谎",
+     "谎",
+     "fake",
+     "fals",
+     "false",
+     "falsely",
+     "falsehood",
+     "/false",
+     "untrue",
+     "虚假",
+     "虚假信息",
+     "伪造",
+     "misinformation",
+     "欺骗",
+     "deceive"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "q_last",
+      48,
+      63
+     ],
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "question-echo: deceive and 欺骗 restate the question word 'deceptive'; kept because they separate",
+     "address-split: false and /false are truth-side answer-synonyms (boolean No) at preans_slot3 L48-63 and think_slot3 L48-63; those addresses are not listed",
+     "假 (fake) is truth-side at think_slot0 L48-63 (1/3) and was not merged"
+    ]
+   },
+   {
+    "name": "[Q2_after] honesty vocabulary",
+    "lie": [],
+    "truth": [
+     "honesty",
+     "honest",
+     "honestly",
+     "诚实",
+     "如实",
+     "坦诚",
+     "实话",
+     "实事求是",
+     "诚信",
+     "正直",
+     "truths",
+     "accurately"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "saidNo-only (structural)",
+     "English truth and true not merged: truth flips side across addresses, true is an answer-synonym at answer-adjacent addresses; truths kept"
+    ]
+   },
+   {
+    "name": "[Q2_after] secrecy vs disclosure",
+    "lie": [
+     "秘密",
+     "的秘密",
+     "secretly",
+     "secrecy",
+     "undisclosed",
+     "隐瞒",
+     "confidentiality"
+    ],
+    "truth": [
+     "publicly"
+    ],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      14,
+      26
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "truth list is one token (publicly, 4/7 at preans_slot2 L14-26)",
+     "protect (8/0, preans_slot2 L48-63) not merged: gloss unclear"
+    ]
+   },
+   {
+    "name": "[Q2_after] real facts (Chinese) on the lie side",
+    "lie": [
+     "真相",
+     "真实",
+     "真实的",
+     "的真实",
+     "事实",
+     "的事实",
+     "事实上",
+     "实际情况"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "counter-intuitive sign: 'the truth / the facts' marks lie items (reads as the withheld fact); English truth/true/truths NOT merged because they sit on the truth side or flip",
+     "确实 (indeed) excluded as answer-synonym although it shares the 实 morpheme"
+    ]
+   },
+   {
+    "name": "[Q2_after] knowledge and intent",
+    "lie": [
+     "knowingly",
+     "know",
+     "knowledge",
+     "都知道",
+     "intentional"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "intentional separates mostly in the said-Yes column (12/0 vs 2/0)",
+     "small English members (know 10/0, knowledge 11/0)"
+    ]
+   },
+   {
+    "name": "[Q2_after] ethics and morality",
+    "lie": [
+     "ethical",
+     "ethics",
+     "unethical",
+     "morally"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "q_last",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "polarity-mixed members (ethical and unethical both lie-marking): reads as 'moral evaluation is active', not a verdict"
+    ]
+   },
+   {
+    "name": "[Q2_after] rule violation and illegality",
+    "lie": [
+     "illegal",
+     "ilegal",
+     "violates",
+     "违反",
+     "违反了",
+     "lawful"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "think_slot1",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "think-slot",
+     "side-unstable neighbours excluded: compliance (lie, think_slot2 L27-47) vs 合规 (truth, think_slot0 L48-63); /legal, 法律问题, guidelines on the truth side",
+     "违反 near-saturated (59/61 lie, 19/23 truth)",
+     "lawful is polarity-opposite to illegal but same topic"
+    ]
+   },
+   {
+    "name": "[Q2_after] contradiction",
+    "lie": [],
+    "truth": [
+     "contradictory",
+     "contrad",
+     "contradiction",
+     "conflicting"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "saidNo-only (structural)",
+     "hypocrisy (0/5, same address) not merged: different gloss"
+    ]
+   },
+   {
+    "name": "[Q2_after] admission and acknowledgment",
+    "lie": [],
+    "truth": [
+     "admitting",
+     "承认",
+     "acknowledging",
+     "acknowledgment"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "saidNo-only (structural)",
+     "address-split: 承认 is lie-side at think_slot3 L27-47 (9/0, all said-Yes) where 'admit' predicts a Yes answer; that address excluded",
+     "acknowledging and acknowledgment are 0/2 each"
+    ]
+   },
+   {
+    "name": "[Q2_after] misleading on the truth side",
+    "lie": [],
+    "truth": [
+     "misleading",
+     "误导"
+    ],
+    "addresses": [
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "saidNo-only (structural)",
+     "counter-intuitive sign: 'misleading' marks truth items, likely a negated context ('not misleading'); tiny counts (0/3, 1/3)"
+    ]
+   },
+   {
+    "name": "[Q2_after] error",
+    "lie": [],
+    "truth": [
+     "ошибка",
+     "erreur",
+     "assertionerror"
+    ],
+    "addresses": [
+     [
+      "think_slot1",
+      48,
+      63
+     ],
+     [
+      "think_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "saidNo-only (structural)",
+     "think-slot",
+     "surface forms are one code identifier and two non-English words; _strerror (code) is lie-side at think_slot1 L48-63 and excluded"
+    ]
+   },
+   {
+    "name": "[Q2_after] refusal",
+    "lie": [
+     "refusal",
+     "拒绝"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "think-slot",
+     "two members; refusal separates mostly in said-No (15/3)"
+    ]
+   },
+   {
+    "name": "[Q2_after] inability to comply",
+    "lie": [],
+    "truth": [
+     "无法",
+     "无法满足"
+    ],
+    "addresses": [
+     [
+      "think_slot1",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "saidNo-only (structural)",
+     "think-slot",
+     "tiny counts (6/8, 2/4)"
+    ]
+   },
+   {
+    "name": "[Q2_after] fantasy and delusion",
+    "lie": [
+     "妄想",
+     "幻想"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot1",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "think-slot",
+     "mechanism unclear; 幻想 near-saturated (46/61 vs 13/23)"
+    ]
+   },
+   {
+    "name": "[Q2_after] wink emoji",
+    "lie": [
+     "😉"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot0",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "think-slot",
+     "pure emoji family, single member (46/13)"
+    ]
+   },
+   {
+    "name": "[Q2_after] question and asking",
+    "lie": [],
+    "truth": [
+     "question",
+     "ask",
+     "提问",
+     "追问"
+    ],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "q_last",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q2_after",
+     "saidNo-only (structural)",
+     "context-descriptive: the readout names the question itself; suspicious",
+     "address-split: 追问 and /question are lie-side and near-saturated at preans_slot0 L27-47 (61/21, 57/18); that address excluded"
+    ]
+   },
+   {
+    "name": "[Q6_factual] lying-deceit",
+    "lie": [
+     "misinformation",
+     "撒谎",
+     "说谎",
+     "谎",
+     "谎言",
+     "欺骗",
+     "伪造",
+     "deception"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "deception is the only member at preans_slot2 L27-47; 谎言/欺骗 the only members at preans_slot4 L27-47"
+    ]
+   },
+   {
+    "name": "[Q6_factual] false-untrue",
+    "lie": [
+     "false",
+     "fals",
+     "falsely",
+     "falsehood",
+     "/false",
+     "untrue",
+     "虚假"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "question-echo: false/fals/falsely/falsehood//false echo 'false statement' in the wording; kept because both classes read the wording and they still separate (55/8, 59/12)",
+     "side-unstable: false and /false read truth-side at preans_slot3 L48-63, preans_slot4 L48-63, think_slot3 L48-63 (answer-value context) - address-specific entry, do not extend"
+    ]
+   },
+   {
+    "name": "[Q6_factual] concealment",
+    "lie": [
+     "隐瞒",
+     "secretly",
+     "secrecy",
+     "秘密",
+     "的秘密",
+     "机密",
+     "undisclosed",
+     "伪装"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "only 隐瞒 is present at the preans_slot1 and preans_slot4 addresses; all other members are preans_slot2 L27-47 only",
+     "конфиден (ru 'confidential') reads truth-side at think_slot2 L27-47 (0/4) - excluded there, opposite pole of this family"
+    ]
+   },
+   {
+    "name": "[Q6_factual] denial",
+    "lie": [
+     "denial",
+     "deny",
+     "denying",
+     "否认"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "否认 (preans_slot4) separates in the said-No column only (13/0 vs 1/0)"
+    ]
+   },
+   {
+    "name": "[Q6_factual] acknowledgment-anticipated",
+    "lie": [
+     "acknowledgment",
+     "承认"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "side-unstable: the same concept (admit/acknowledging/承认) is truth-marking at preans_slot1 - address-specific entry, never merge with 'admission'",
+     "preans_slot4 counts sit in the said-Yes column only (7/0, 7/0)"
+    ]
+   },
+   {
+    "name": "[Q6_factual] admission",
+    "lie": [],
+    "truth": [
+     "admit",
+     "admitting",
+     "admission",
+     "admissions",
+     "acknowledging",
+     "承认"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "side-unstable: acknowledgment/承认 are lie-marking at q_last L27-47 and preans_slot4 L27-47 - address-specific entry",
+     "only 承认 is present at preans_slot1 L27-47"
+    ]
+   },
+   {
+    "name": "[Q6_factual] honesty",
+    "lie": [],
+    "truth": [
+     "honest",
+     "honesty",
+     "诚实",
+     "如实",
+     "实话",
+     "实事求是",
+     "真实",
+     "真实性",
+     "truths"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "side-unstable: honesty/truth/truthful are lie-marking at q_last L48-63, and 的真实性/真相 are lie-marking at preans_slot2 - address-specific entry",
+     "only honesty, 诚实, 真实性 are present at preans_slot4 L27-47"
+    ]
+   },
+   {
+    "name": "[Q6_factual] truth-words-at-question",
+    "lie": [
+     "truth",
+     "_truth",
+     "truthful",
+     "honesty"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "side-unstable: the same words are truth-marking at preans_slot1 and at preans_slot4 L48-63 (truth 15/15, truthful 2/6) - address-specific entry",
+     "separation lives mostly in the said-Yes column (honesty 15/0 vs 5/1; truthful 25/0 vs 12/7)"
+    ]
+   },
+   {
+    "name": "[Q6_factual] correctness",
+    "lie": [],
+    "truth": [
+     "correct",
+     "correctly",
+     "correctness",
+     "accurate",
+     "factual",
+     "incorrect",
+     "错误"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "includes the negative pole (incorrect, 错误) on the same side - gloss is 'correctness-assessment vocabulary', not 'correct'",
+     "only correct/correctly are present at preans_slot1 L27-47"
+    ]
+   },
+   {
+    "name": "[Q6_factual] facts-reality",
+    "lie": [
+     "facts",
+     "事实",
+     "的事实",
+     "实际情况",
+     "真相",
+     "reality",
+     "的真实性"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "side-unstable: 事实 and 真实性 read truth-side at preans_slot4 L27-47 (0/4 each) - address-specific entry",
+     "separation mostly in the said-Yes column (事实 23/0 vs 9/6; 实际情况 21/0 vs 8/4)"
+    ]
+   },
+   {
+    "name": "[Q6_factual] premise",
+    "lie": [
+     "premise",
+     "premises",
+     "prem"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "scenario-meta: names the task setup, eval-awareness-adjacent",
+     "said-Yes dominant (premises 14/0 vs 4/2)"
+    ]
+   },
+   {
+    "name": "[Q6_factual] knowing",
+    "lie": [
+     "know",
+     "knowing"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "two members at 8/0 each; separation in the said-Yes column only (7/0, 6/0)"
+    ]
+   },
+   {
+    "name": "[Q6_factual] contradiction",
+    "lie": [],
+    "truth": [
+     "contradict",
+     "contradictory",
+     "contrad",
+     "conflicting",
+     "矛盾"
+    ],
+    "addresses": [
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual"
+    ]
+   },
+   {
+    "name": "[Q6_factual] rules-instructions",
+    "lie": [],
+    "truth": [
+     "instructions",
+     "guidelines",
+     "constraints",
+     "explicitly",
+     "规定",
+     "明确规定",
+     "设定的"
+    ],
+    "addresses": [
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "think_slot0",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "only constraints is present at think_slot0 L48-63"
+    ]
+   },
+   {
+    "name": "[Q6_factual] roleplay-framing",
+    "lie": [],
+    "truth": [
+     "scenario",
+     "persona",
+     "personas",
+     "narrative",
+     "description",
+     "脚本"
+    ],
+    "addresses": [
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "think_slot1",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "eval-awareness: names the role-play setup (scenario/persona/script)",
+     "only 脚本 is present at think_slot1 L27-47 (28/17, weak)"
+    ]
+   },
+   {
+    "name": "[Q6_factual] being-questioned",
+    "lie": [
+     "ask",
+     "asks",
+     "asked",
+     "asking",
+     "质问",
+     "追问",
+     "逼"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "q_last",
+      48,
+      63
+     ],
+     [
+      "preans_slot0",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "context-generic: both classes have just been asked the same question; kept because it separates (asked 19/1, ask 19/1, 追问 56/14)",
+     "'question' forms (/question, -question, questions) are side-unstable and excluded - do not add",
+     "only 追问 is present at preans_slot0 L27-47"
+    ]
+   },
+   {
+    "name": "[Q6_factual] self-check",
+    "lie": [],
+    "truth": [
+     "反思",
+     "反射",
+     ".reflect",
+     "audit",
+     "审计",
+     "验证",
+     "logic"
+    ],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "q_last",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "lie counts for audit/审计 sit in the said-Yes column (7/0, 4/0) while truth counts sit in said-No",
+     "验证 and logic are 0/2 each (q_last L27-47)"
+    ]
+   },
+   {
+    "name": "[Q6_factual] rule-violation",
+    "lie": [
+     "违反了",
+     "违规",
+     "illegal",
+     "非法",
+     "compliance",
+     "合规",
+     "ethics",
+     "道德",
+     "refusal"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot0",
+      48,
+      63
+     ],
+     [
+      "think_slot1",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q6_factual",
+     "assistant-policy vocabulary (compliance/ethics/refusal): may track harmful-request scenario content rather than the lie",
+     "/legal and _legal read truth-side at think_slot0 L48-63 - treated as path fragments and excluded, but they are the opposite pole"
+    ]
+   },
+   {
+    "name": "[Q7_ab] truth/facts/reality",
+    "lie": [
+     "事实",
+     "真实",
+     "的真实",
+     "真实性",
+     "facts",
+     "factual",
+     "真实的",
+     "实际情况",
+     "truth",
+     "真相",
+     "reality",
+     "truthful",
+     "的事实",
+     "实情",
+     "حق"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "think_slot0",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "question-echo member: truthful (word of the B option); kept because it separates 18/0 at preans_slot1 L48-63",
+     "morphological neighbours true/honest are truth-marking at preans_slot4 L27-47 (see 'truthful/correct'); split by address",
+     "حق (Arabic truth/right) only at think_slot0 L48-63, 14/1, polysemous"
+    ]
+   },
+   {
+    "name": "[Q7_ab] concealment (hide/secret/protect)",
+    "lie": [
+     "秘密",
+     "secretly",
+     "protecting",
+     "confidential",
+     "保住",
+     "hidden",
+     "隐瞒",
+     "保密",
+     "隐藏",
+     "暗",
+     "bí"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "think_slot1",
+      48,
+      63
+     ],
+     [
+      "think_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "side-unstable: secret is truth-marking 10/9 and hidden truth-marking 6/6 at preans_slot2 L48-63; secret excluded, hidden kept only through preans_slot4 L27-47 (31/0)",
+     "暗 (single char, dark/covert) and bí (fragment of Vietnamese bí mật = secret) are weak surface forms",
+     "保住 = hold on to (a job/secret), polysemous"
+    ]
+   },
+   {
+    "name": "[Q7_ab] scenario premise/setup",
+    "lie": [
+     "context",
+     "情境",
+     "设定",
+     "premise"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "side-unstable: context is truth-marking 0/2 at preans_slot3 L48-63; kept address-specific",
+     "possible structural leakage: lie items may carry a more elaborate system-prompt setup than truth items"
+    ]
+   },
+   {
+    "name": "[Q7_ab] admit/deny",
+    "lie": [
+     "承认",
+     "否认",
+     "acknowledgment",
+     "recogn"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "think_slot0",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "separation of 承认 (10/0 vs 2/0) and acknowledgment (5/0 vs 3/0) lives mostly in the said-Yes column; 否认 only in said-No (9/0)",
+     "recogn is a fragment (recognize/recognition), 8/0"
+    ]
+   },
+   {
+    "name": "[Q7_ab] knowing/awareness",
+    "lie": [
+     "明知",
+     "众所周知"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      14,
+      26
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "loose gloss: 明知 = knowingly (14/0), 众所周知 = well known to all (7/0); small"
+    ]
+   },
+   {
+    "name": "[Q7_ab] refusal/cannot/sorry",
+    "lie": [
+     "抱歉",
+     "不能",
+     "我不能",
+     "cannot",
+     "不方便",
+     "拒绝"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot3",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      48,
+      63
+     ],
+     [
+      "think_slot1",
+      48,
+      63
+     ],
+     [
+      "think_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "cannot near-saturated at preans_slot3 L48-63 (52/16); cleanest at think_slot2 L48-63 (35/5)",
+     "选择不 (choose not to) is truth-marking 5/7 at think_slot3 L27-47 — excluded as a concept-level side flip"
+    ]
+   },
+   {
+    "name": "[Q7_ab] silence",
+    "lie": [
+     "沉默",
+     "silence"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "near-saturated (60/20, 49/14); weak"
+    ]
+   },
+   {
+    "name": "[Q7_ab] prohibition/violation (think block)",
+    "lie": [
+     "约束",
+     "违反",
+     "prohibited",
+     "禁止",
+     "ethics",
+     "unauthorized",
+     "license",
+     "violate"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot0",
+      27,
+      47
+     ],
+     [
+      "think_slot1",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "side-unstable: 违反, 禁止, 约束 are truth-marking at preans_slot1 L27-47/L48-63 (see 'rules/constraints'); split by address, never merged",
+     "license 12/0 sits mostly in the said-Yes column (9/0 vs 3/0); possible topic leakage (licensing scenarios)"
+    ]
+   },
+   {
+    "name": "[Q7_ab] plan/prepare",
+    "lie": [
+     "准备",
+     "计划",
+     "提案"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot0",
+      48,
+      63
+     ],
+     [
+      "think_slot1",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "near-saturated (42/11, 44/11); weak; 提案 = proposal is a loose fit"
+    ]
+   },
+   {
+    "name": "[Q7_ab] claude (model name)",
+    "lie": [
+     "claude"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot0",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "eval-awareness / identity word; single member; 8/0"
+    ]
+   },
+   {
+    "name": "[Q7_ab] choose/select",
+    "lie": [
+     "请选择",
+     "选择了",
+     "选择的",
+     "中选择",
+     "chooses",
+     "select",
+     "choices",
+     "choice"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "q_last",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "answer-format: reads the A/B forced-choice framing ('Answer with A or B only'), not necessarily the condition",
+     "请选择 61/20 and choices 58/19 are near-saturated; 选择了 separates inside said-No (30/42 vs 7/23)",
+     "option (truth-marking at think_slot3, 10/13 and 26/18) and 选择不 excluded — concept-level side flip"
+    ]
+   },
+   {
+    "name": "[Q7_ab] rules/constraints",
+    "lie": [],
+    "truth": [
+     "禁止",
+     "constraints",
+     "违反",
+     "约束",
+     "constraint",
+     "遵守",
+     "rules",
+     "规则",
+     "违背",
+     "guidelines",
+     "instrucciones",
+     "guideline",
+     "instruction"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "side-unstable: 违反, 禁止, 约束 are lie-marking inside the think block (see 'prohibition/violation (think block)'); kept address-specific",
+     "instruction/instrucciones may reflect system-prompt structure rather than the condition"
+    ]
+   },
+   {
+    "name": "[Q7_ab] contradiction/conflict",
+    "lie": [],
+    "truth": [
+     "contradiction",
+     "contradictory",
+     "矛盾",
+     "conflicting"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab"
+    ]
+   },
+   {
+    "name": "[Q7_ab] truthful/correct",
+    "lie": [],
+    "truth": [
+     "correct",
+     "true",
+     "honest",
+     "honesty"
+    ],
+    "addresses": [
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "near-answer: paraphrases the B option content ('No, I was truthful'); may read the coming answer rather than the condition",
+     "question-echo-adjacent: true is a variant of truthful (in the question); truthful itself is lie-marking at preans_slot1 L48-63",
+     "correct separates inside said-No (4/42 vs 20/23); true is split (said-Yes 10/0, said-No 6/14)",
+     "the opposite-meaning family 'false/incorrect/error' is also truth-marking at the same position, later band"
+    ]
+   },
+   {
+    "name": "[Q7_ab] false/incorrect/error",
+    "lie": [],
+    "truth": [
+     "false",
+     "错误",
+     "error",
+     "incorrect",
+     "failed",
+     "wrong",
+     "invalid"
+    ],
+    "addresses": [
+     [
+      "preans_slot4",
+      48,
+      63
+     ],
+     [
+      "think_slot3",
+      48,
+      63
+     ],
+     [
+      "think_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "near-answer: may paraphrase the No answer ('did you lie' -> false)",
+     "at think_slot3 L48-63 false is present in 37/42 said-No lie and 23/23 truth (answer-prediction pattern); at preans_slot4 L48-63 it separates inside said-No (5/42 vs 10/23)",
+     "alternative gloss: truth items reason that the previous response was mistaken rather than deceptive",
+     "invalid only 1/4 (think_slot2 L27-47)"
+    ]
+   },
+   {
+    "name": "[Q7_ab] legal/law",
+    "lie": [],
+    "truth": [
+     "legality",
+     "法律",
+     "法律问题",
+     "_legal",
+     "/legal"
+    ],
+    "addresses": [
+     [
+      "think_slot0",
+      27,
+      47
+     ],
+     [
+      "think_slot0",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "possible topic leakage (legal-advice scenarios)",
+     "_legal and /legal are code-path fragments"
+    ]
+   },
+   {
+    "name": "[Q7_ab] clever/ingenious",
+    "lie": [],
+    "truth": [
+     "巧",
+     "巧妙",
+     "巧妙地"
+    ],
+    "addresses": [
+     [
+      "think_slot1",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "weak (12/13, 17/12, 0/2); 巧 is a single character"
+    ]
+   },
+   {
+    "name": "[Q7_ab] impossible",
+    "lie": [],
+    "truth": [
+     "impossible",
+     "impossibile"
+    ],
+    "addresses": [
+     [
+      "think_slot1",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "small; impossibile (Italian) 30/16 near-saturated"
+    ]
+   },
+   {
+    "name": "[Q7_ab] risk/safety",
+    "lie": [],
+    "truth": [
+     "safe",
+     "risks",
+     "jeopard",
+     "低风险"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "think_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "small counts (0/4, 1/3, 1/4); jeopard is a fragment; 低风险 near-balanced 17/15"
+    ]
+   },
+   {
+    "name": "[Q7_ab] strategy/game",
+    "lie": [],
+    "truth": [
+     "博弈",
+     "策略"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "small; 策略 lie presence sits in the said-Yes column (5/0 vs 1/8)"
+    ]
+   },
+   {
+    "name": "[Q7_ab] previous",
+    "lie": [],
+    "truth": [
+     "преды",
+     "之前的"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "question-echo ('previous response'); kept only because both separate (0/4 each); tiny"
+    ]
+   },
+   {
+    "name": "[Q7_ab] persona",
+    "lie": [],
+    "truth": [
+     "persona"
+    ],
+    "addresses": [
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "single member; 15/11; may reflect system-prompt structure"
+    ]
+   },
+   {
+    "name": "[Q7_ab] wait (reconsideration)",
+    "lie": [],
+    "truth": [
+     "wait"
+    ],
+    "addresses": [
+     [
+      "think_slot3",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "single member; near-answer; 7/14, separates inside said-No (5/42 vs 14/23)"
+    ]
+   },
+   {
+    "name": "[Q7_ab] emoji",
+    "lie": [
+     "❤️",
+     "😉"
+    ],
+    "truth": [
+     "✅"
+    ],
+    "addresses": [
+     [
+      "think_slot0",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "think_slot3",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q7_ab",
+     "surface class: members share no single meaning; 😉 (wink) plausibly deception-related, ✅ semantically belongs with 'truthful/correct' but kept in the emoji class",
+     "lie members only at think_slot0 L27-47 (25/5, 38/10); ✅ only at preans_slot4 L27-47 (0/4) and think_slot3 L27-47 (1/3)"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] falsehood",
+    "lie": [
+     "untrue",
+     "dishonest",
+     "撒谎",
+     "造假",
+     "伪造",
+     "假的",
+     "dish",
+     "谎言",
+     "欺骗",
+     "fals",
+     "说谎",
+     "谎",
+     "fake",
+     "虚假",
+     "falsehood",
+     "falsely",
+     "misleading",
+     "虚构"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      14,
+      26
+     ],
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      14,
+      26
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "think_slot0",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "question-echo: 'lie' is in the question; family separates although both classes read it",
+     "side-unstable at q_last L48-63: 说谎 (3/5) and lied (10/11) sit on the truth side there; family restricted to preans/think addresses",
+     "fragments included: dish (dishonest), fals (false/falsehood)",
+     "excluded as side-unstable: 假 (truth side, preans_slot1 L27-47); 真实的/的真实/事实 (lie side at preans_slot1 L27-47 while 真实 is truth side at preans_slot2/4)"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] concealment-denial",
+    "lie": [
+     "隐瞒",
+     "conceal",
+     "concealed",
+     "否认",
+     "denying"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "excluded as side-unstable: 否定 (lie side preans_slot4 L27-47, truth side think_slot3 where it reads as the negative answer)",
+     "confidentiality (preans_slot4 L27-47, 11/0) excluded as scenario noun although it borders this sense"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] knowing-intent",
+    "lie": [
+     "knowingly",
+     "know",
+     "knowing",
+     "明知"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "single address; ingly (q_last L14-26) not added, fragment too ambiguous"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] admission",
+    "lie": [
+     "acknowledgment",
+     "承认"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "one-column: separation lives in said-Yes only (acknowledgment 12/0 vs 0/0; 承认 10/0 vs 1/0)",
+     "two members, one address"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] refusal",
+    "lie": [
+     "cannot",
+     "拒绝",
+     "refusal",
+     "impossible",
+     "拒",
+     "_cannot",
+     "reject"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot4",
+      48,
+      63
+     ],
+     [
+      "think_slot2",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      48,
+      63
+     ],
+     [
+      "think_slot3",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "side-unstable across positions: 无法 (4/5) and impossibile (7/7) sit on the truth side at think_slot1 L27-47 (excluded); none is lie side at think_slot3 L48-63 but truth side at preans_slot4 L48-63 (excluded)",
+     "think_slot2/3 and preans_slot4 are answer-adjacent"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] wrongdoing",
+    "lie": [
+     "unethical",
+     "违规",
+     "illegal"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "think_slot0",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      27,
+      47
+     ],
+     [
+      "think_slot2",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "topic-leakage risk: legal words sit on the truth side (/legal think_slot0 L48-63 11/10, legally think_slot2 L27-47 0/2) and neutral 在法律 on the lie side (think_slot2 L48-63 9/0) - all excluded",
+     "unethical separates in said-Yes only (11/0 vs 1/0)"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] interrogation",
+    "lie": [
+     "/question",
+     "asks",
+     "asking",
+     "质问",
+     "质疑",
+     "challenge",
+     "挑战",
+     "询问",
+     "fragen"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      27,
+      47
+     ],
+     [
+      "q_last",
+      48,
+      63
+     ],
+     [
+      "preans_slot0",
+      27,
+      47
+     ],
+     [
+      "preans_slot0",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "side-unstable across positions: challenge (44/21) and 挑戰 (0/2) sit on the truth side at think_slot0 L27-47; question (2/5) and questioning (18/12) truth side at preans_slot1 L14-26; 问道/地问道 truth side at think_slot0 L27-47 - all excluded, family restricted to q_last/preans_slot0",
+     "询问 is near base rate (58/19 of 61/23)",
+     "/question is a fragment form"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] honesty",
+    "lie": [],
+    "truth": [
+     "honesty",
+     "honest",
+     "诚实",
+     "telling",
+     "诚信",
+     "实话",
+     "如实",
+     "坦诚",
+     "实事求是",
+     "honestly",
+     "integrity",
+     "truths",
+     "坦白",
+     "tell",
+     "_truth"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      48,
+      63
+     ],
+     [
+      "preans_slot4",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "saidNo-only separation (structural: said-Yes has 0 truth items)",
+     "telling/tell included on the reading 'telling the truth'; fragment: _truth",
+     "excluded as side-unstable: 真实 (preans_slot2 L27-47 10/12, preans_slot4 L27-47 1/3), 真 (think_slot0 L48-63), 真的 (think_slot2 L48-63) - 真实的 is lie side at preans_slot1 L27-47"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] error-contradiction",
+    "lie": [],
+    "truth": [
+     "错误",
+     "contradiction",
+     "矛盾",
+     ".invalid",
+     "err",
+     "ошибка"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "think_slot1",
+      27,
+      47
+     ],
+     [
+      "think_slot1",
+      48,
+      63
+     ],
+     [
+      "think_slot2",
+      27,
+      47
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "saidNo-only separation (structural: said-Yes has 0 truth items)",
+     ".invalid and err are code-ish fragments",
+     "onerror (JS attribute, 14/1) sits on the lie side at think_slot1 L48-63; excluded as code token"
+    ]
+   },
+   {
+    "name": "[Q9_dyl] previous-message",
+    "lie": [],
+    "truth": [
+     "previous"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ]
+    ],
+    "flags": [
+     "wording: Q9_dyl",
+     "single token",
+     "question-echo paraphrase: 'last message' -> previous; kept because it separates although both classes read the question",
+     "saidNo-only separation (structural: said-Yes has 0 truth items)"
+    ]
+   }
+  ]
+ }
+]

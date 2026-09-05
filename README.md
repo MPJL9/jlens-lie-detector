@@ -27,7 +27,8 @@ Terms used throughout:
   counts once); two-sided families score lie-side minus truth-side.
 - **Cell**: the population an AUROC is computed on. *Stage 1* cells are unconditional on
   the self-report; *stage 2* cells condition on the model's answer to the self-report question
-  (mostly the said-No cell: the model denies having lied).
+  (mostly the said-No cell: the model denies having lied). The write-up calls stage-1 numbers
+  *unconditional* and stage-2 said-No numbers *denial-conditioned*.
 
 ## Layout
 
@@ -40,6 +41,7 @@ exports/      viewer samples (2 scenarios x lie/truth x 2 formats per model); fu
 runs/         per-run transcripts, self-report sequences, judge labels, probe/monitor outputs (all small)
 data/         MASK scenarios (MIT) and the row index of the AISI rollout sample
 results/      the result tables the write-up cites, as produced by the scripts
+figures/      the figures in the write-up, plus the values behind the histogram
 slurm/        the job scripts used on our cluster
 ```
 
@@ -67,6 +69,7 @@ judge labels: 12B 17 lie / 19 truth, 27B 21 / 15, Qwen 61 / 23, gpt-oss 55 / 50.
 | Probe read position verified on AISI's own rollouts | `baselines/dyl_probe_replication_check.py` | `data/dyl_rollouts/*__sample120.jsonl` | `results/dyl_comparison_audit.md` section 6, `runs/dyl_replication/` |
 | Families under AISI's labelling | `baselines/family_scores_aisi_labelling.py` | Q9 exports | `results/family_scores_aisi_labelling*.md` |
 | Transcript-only monitor 0.92-0.93 and the paired family-minus-monitor bootstrap | `baselines/monitor_inputs_build.py` (+ a Claude reader), `baselines/family_vs_monitor_bootstrap.py` | `runs/monitor_baseline_c3_sonnet/` | `results/monitor_baseline.md`, `results/ci_for_application.md` |
+| Other positions near the self-report answer: the frozen and AISI-native lists swept over the question's last token, pre-answer slots 0-4 and think slots 0-3 in every wording cell; a fresh per-wording curation on the same positions (86 families) | `families/score_families.py --spec families/specs/family_spec_preans_sweep.json`; `families/scout_near_answer_qwen.py` -> five per-wording scout tables -> five fresh curations under the prompt -> `families/build_near_answer_spec.py` -> scorer with `family_spec_near_answer_gen.json` | `exports/qwen3_6_27b__c3_g0_k16`, `exports/qwen3_6_27b__c3_q9` | `results/family_scores_near_answer_sweep.md`, `results/scout_near_answer_qwen_<wording>.md`, `results/family_gen_near_answer_qwen_<wording>.md` (specs + exclusion logs), `results/family_scores_near_answer_gen.md` |
 | Labels: judge agreement with the mechanical rule 97% (Gemma), 89% (Qwen), 79% (gpt-oss) | `src/judge_labels.py` | `runs/<run>/transcripts.jsonl` | `runs/<run>/judge_summary.json` |
 
 The scorer prints one Markdown table per cell; the files in `results/` are its output.
