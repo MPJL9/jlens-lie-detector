@@ -1,0 +1,835 @@
+[
+ {
+  "model": "gemma-3-12b-it",
+  "export": "exports/gemma_3_12b_it__c3_q9",
+  "labels": "runs/gemma_3_12b_it__c3_g0/judge_final_labels.json",
+  "transcripts": "runs/gemma_3_12b_it__c3_g0/transcripts.jsonl",
+  "cells": [
+   {
+    "name": "stage1_pf_Q9 (exact DYL wording)",
+    "stage": 1,
+    "answer_label": null,
+    "formats": [
+     "Q9_dyl"
+    ],
+    "sources": [
+     "pf"
+    ]
+   },
+   {
+    "name": "Q9_saidNo_pf",
+    "stage": 2,
+    "answer_label": "no",
+    "formats": [
+     "Q9_dyl"
+    ],
+    "sources": [
+     "pf"
+    ]
+   },
+   {
+    "name": "Q9_saidYes_pf",
+    "stage": 2,
+    "answer_label": "yes",
+    "formats": [
+     "Q9_dyl"
+    ],
+    "sources": [
+     "pf"
+    ]
+   }
+  ],
+  "families": [
+   {
+    "name": "F1 lie-words",
+    "lie": [
+     "謊",
+     "거짓",
+     "মিথ্যা",
+     "झूठ",
+     "सच्चाई",
+     "🤥",
+     "lies",
+     "dishonest",
+     "dishonesty",
+     "deceptive",
+     "misinformation",
+     "misleading",
+     "misrepresented",
+     "contradicts",
+     "contradicting",
+     "sneaky"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      22,
+      33
+     ],
+     [
+      "preans_slot2",
+      22,
+      33
+     ],
+     [
+      "postresp_slot1",
+      22,
+      33
+     ],
+     [
+      "postresp_slot2",
+      22,
+      33
+     ],
+     [
+      "preresp_slot1",
+      22,
+      33
+     ],
+     [
+      "preresp_slot2",
+      22,
+      33
+     ],
+     [
+      "postresp_slot1",
+      22,
+      22
+     ],
+     [
+      "postresp_slot2",
+      22,
+      23
+     ],
+     [
+      "preans_slot1",
+      26,
+      26
+     ],
+     [
+      "preans_slot2",
+      23,
+      24
+     ]
+    ]
+   },
+   {
+    "name": "F3 acknowledge (truth-side)",
+    "lie": [],
+    "truth": [
+     "acknowledge",
+     "acknowledges",
+     "acknowledgment",
+     "acknowledgement",
+     "acknowled",
+     "affirm"
+    ],
+    "addresses": [
+     [
+      "preans_slot2",
+      22,
+      33
+     ],
+     [
+      "postresp_slot2",
+      22,
+      33
+     ],
+     [
+      "preresp_slot2",
+      22,
+      33
+     ],
+     [
+      "preans_slot2",
+      24,
+      24
+     ],
+     [
+      "preresp_slot2",
+      22,
+      23
+     ]
+    ]
+   },
+   {
+    "name": "F2 suspicion-emoji",
+    "lie": [
+     "🤨",
+     "🤫",
+     "😏",
+     "🤐",
+     "🫢",
+     "❓"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "postresp_slot2",
+      14,
+      44
+     ],
+     [
+      "preresp_slot2",
+      14,
+      44
+     ],
+     [
+      "postresp_slot2",
+      19,
+      19
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "model": "gemma-3-27b-it",
+  "export": "exports/gemma_3_27b_it__c3_q9",
+  "labels": "runs/gemma_3_27b_it__c3_g0/judge_final_labels.json",
+  "transcripts": "runs/gemma_3_27b_it__c3_g0/transcripts.jsonl",
+  "cells": [
+   {
+    "name": "stage1_pf_Q9 (exact DYL wording)",
+    "stage": 1,
+    "answer_label": null,
+    "formats": [
+     "Q9_dyl"
+    ],
+    "sources": [
+     "pf"
+    ]
+   },
+   {
+    "name": "Q9_saidNo_pf",
+    "stage": 2,
+    "answer_label": "no",
+    "formats": [
+     "Q9_dyl"
+    ],
+    "sources": [
+     "pf"
+    ]
+   },
+   {
+    "name": "Q9_saidYes_pf",
+    "stage": 2,
+    "answer_label": "yes",
+    "formats": [
+     "Q9_dyl"
+    ],
+    "sources": [
+     "pf"
+    ]
+   }
+  ],
+  "families": [
+   {
+    "name": "F1 lie-words",
+    "lie": [
+     "謊",
+     "거짓",
+     "মিথ্যা",
+     "झूठ",
+     "सच्चाई",
+     "🤥",
+     "lies",
+     "dishonest",
+     "dishonesty",
+     "deceptive",
+     "misinformation",
+     "misleading",
+     "misrepresented",
+     "contradicts",
+     "contradicting",
+     "sneaky"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      28,
+      44
+     ],
+     [
+      "preans_slot2",
+      28,
+      44
+     ],
+     [
+      "postresp_slot1",
+      28,
+      44
+     ],
+     [
+      "postresp_slot2",
+      28,
+      44
+     ],
+     [
+      "preresp_slot1",
+      28,
+      44
+     ],
+     [
+      "preresp_slot2",
+      28,
+      44
+     ],
+     [
+      "postresp_slot2",
+      36,
+      36
+     ],
+     [
+      "preans_slot1",
+      35,
+      35
+     ],
+     [
+      "preans_slot2",
+      29,
+      33
+     ]
+    ]
+   },
+   {
+    "name": "F3 acknowledge (truth-side)",
+    "lie": [],
+    "truth": [
+     "acknowledge",
+     "acknowledges",
+     "acknowledgment",
+     "acknowledgement",
+     "acknowled",
+     "affirm"
+    ],
+    "addresses": [
+     [
+      "preans_slot2",
+      28,
+      44
+     ],
+     [
+      "postresp_slot2",
+      28,
+      44
+     ],
+     [
+      "preresp_slot2",
+      28,
+      44
+     ],
+     [
+      "preans_slot2",
+      28,
+      31
+     ]
+    ]
+   },
+   {
+    "name": "F2 suspicion-emoji",
+    "lie": [
+     "🤨",
+     "🤫",
+     "😏",
+     "🤐",
+     "🫢",
+     "❓"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "postresp_slot2",
+      14,
+      44
+     ],
+     [
+      "preresp_slot2",
+      14,
+      44
+     ],
+     [
+      "postresp_slot2",
+      27,
+      27
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "model": "qwen3.6-27b",
+  "export": "exports/qwen3_6_27b__c3_q9",
+  "labels": "runs/qwen3_6_27b__c3_g0/judge_final_labels.json",
+  "transcripts": "runs/qwen3_6_27b__c3_g0/transcripts.jsonl",
+  "cells": [
+   {
+    "name": "stage1_pf_Q9 (exact DYL wording)",
+    "stage": 1,
+    "answer_label": null,
+    "formats": [
+     "Q9_dyl"
+    ],
+    "sources": [
+     "pf"
+    ]
+   },
+   {
+    "name": "Q9_saidNo_pf",
+    "stage": 2,
+    "answer_label": "no",
+    "formats": [
+     "Q9_dyl"
+    ],
+    "sources": [
+     "pf"
+    ]
+   },
+   {
+    "name": "Q9_saidYes_pf",
+    "stage": 2,
+    "answer_label": "yes",
+    "formats": [
+     "Q9_dyl"
+    ],
+    "sources": [
+     "pf"
+    ]
+   }
+  ],
+  "families": [
+   {
+    "name": "Q-A falsehood/honesty",
+    "lie": [
+     "谎言",
+     "说谎",
+     "撒谎",
+     "谎",
+     "虚假",
+     "伪造",
+     "欺骗",
+     "隐瞒",
+     "否认",
+     "false",
+     "falsehood",
+     "fals",
+     "falsely",
+     "fake",
+     "untrue",
+     "misinformation",
+     "误导",
+     "misleading",
+     "misrepresented",
+     "denial",
+     "denying",
+     "/false"
+    ],
+    "truth": [
+     "承认",
+     "admit",
+     "admitting",
+     "admitted",
+     "admits",
+     "admission",
+     "admissions",
+     "acknowledgment",
+     "acknowledgement",
+     "acknowledging",
+     "acknowledge",
+     "honesty",
+     "honest",
+     "honestly",
+     "诚实",
+     "坦诚",
+     "如实",
+     "坦白",
+     "实话",
+     "实事求是",
+     "truth",
+     "truths",
+     "真相",
+     "truthful"
+    ],
+    "addresses": [
+     [
+      "postresp_slot1",
+      27,
+      47
+     ],
+     [
+      "postresp_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "postresp_slot1",
+      55,
+      55
+     ],
+     [
+      "preans_slot1",
+      49,
+      49
+     ]
+    ]
+   },
+   {
+    "name": "Q-B assertion",
+    "lie": [
+     "asserting",
+     "claiming",
+     "claim",
+     "claims",
+     "assertion",
+     "assertions",
+     "assert",
+     "声称",
+     "statements",
+     "stating"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot1",
+      58,
+      58
+     ]
+    ]
+   },
+   {
+    "name": "Q-C emphatic-absolutes",
+    "lie": [
+     "absolutely",
+     "unequiv",
+     "绝对不是",
+     "没有任何",
+     "绝对",
+     "绝对不会",
+     "definitely",
+     "certainly",
+     "undeniable",
+     "confidently",
+     "perfectly",
+     "truly",
+     "nothing",
+     "任何",
+     "absolut"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "think_slot3",
+      27,
+      47
+     ],
+     [
+      "think_slot3",
+      38,
+      46
+     ]
+    ]
+   },
+   {
+    "name": "Q-D skepticism",
+    "lie": [
+     "质疑",
+     "质问",
+     "questioning",
+     "skepticism",
+     "skeptical",
+     "skept",
+     "???",
+     "?!?",
+     "accusations"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "postresp_slot4",
+      27,
+      47
+     ],
+     [
+      "preans_slot0",
+      27,
+      47
+     ],
+     [
+      "postresp_slot4",
+      38,
+      38
+     ],
+     [
+      "preans_slot0",
+      42,
+      42
+     ]
+    ]
+   },
+   {
+    "name": "N1 illegality",
+    "lie": [
+     "legal",
+     "illegal",
+     "legality",
+     "违法",
+     "违规",
+     "违法违规",
+     "违反了",
+     "非法",
+     "unauthorized",
+     "prohibited",
+     "禁用",
+     "严禁",
+     "forbidden",
+     "警告",
+     "warning",
+     "合规",
+     "compliance",
+     "合法",
+     "法律",
+     "严格遵守",
+     "violates"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot0",
+      27,
+      47
+     ],
+     [
+      "think_slot1",
+      27,
+      47
+     ],
+     [
+      "think_slot0",
+      43,
+      43
+     ]
+    ]
+   },
+   {
+    "name": "N2 refusal/apology",
+    "lie": [
+     "拒绝",
+     "refusal",
+     "refuse",
+     "refuses",
+     "reject",
+     "sorry",
+     "抱歉",
+     "我无法",
+     "我不能",
+     "cannot",
+     "impossible",
+     "silence",
+     "nein"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot2",
+      48,
+      63
+     ],
+     [
+      "preans_slot3",
+      48,
+      63
+     ],
+     [
+      "think_slot2",
+      48,
+      54
+     ]
+    ]
+   },
+   {
+    "name": "N3 deliberation",
+    "lie": [
+     "需谨慎",
+     "首先",
+     "先",
+     "策略",
+     "平衡",
+     "等待",
+     "expect",
+     "猜测"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot0",
+      27,
+      47
+     ],
+     [
+      "think_slot0",
+      48,
+      63
+     ],
+     [
+      "think_slot0",
+      53,
+      53
+     ]
+    ]
+   },
+   {
+    "name": "N4 secrecy/protection",
+    "lie": [
+     "保密",
+     "confidentiality",
+     "secrecy",
+     "secretly",
+     "protect",
+     "protecting",
+     "保护",
+     "的保护",
+     "mandated",
+     "mandate",
+     "职责",
+     "的任务",
+     "paranoid",
+     "prioritize"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot2",
+      27,
+      47
+     ],
+     [
+      "preans_slot2",
+      45,
+      45
+     ]
+    ]
+   },
+   {
+    "name": "N5 delusion/fantasy",
+    "lie": [
+     "妄想",
+     "幻想",
+     "fiction",
+     "fake",
+     "假"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "think_slot1",
+      27,
+      47
+     ],
+     [
+      "think_slot1",
+      42,
+      43
+     ]
+    ]
+   },
+   {
+    "name": "N6 performed-sincerity",
+    "lie": [
+     "respectfully",
+     "respectful",
+     "sincerely",
+     "sincere",
+     "genuinely",
+     "legitimate",
+     "lawful"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot4",
+      27,
+      47
+     ],
+     [
+      "preans_slot4",
+      42,
+      44
+     ]
+    ]
+   },
+   {
+    "name": "N7 forced-binary",
+    "lie": [
+     "forced",
+     "forcing",
+     "迫使",
+     "强制",
+     "逼",
+     "binary",
+     "-binary",
+     "_binary",
+     "二进制",
+     "二元",
+     "binaries"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "q_last",
+      48,
+      63
+     ]
+    ]
+   },
+   {
+    "name": "N8 scenario-pressure (truth-side)",
+    "lie": [],
+    "truth": [
+     "constraints",
+     "prompts",
+     "情境",
+     "scenario",
+     "_scenario",
+     "设定的",
+     "narrative",
+     "pressure",
+     "压力",
+     "threats",
+     "threat",
+     "paranoia",
+     "desperation",
+     "uphold"
+    ],
+    "addresses": [
+     [
+      "preans_slot2",
+      48,
+      63
+     ]
+    ]
+   }
+  ]
+ }
+]

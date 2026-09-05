@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>J-Lens Lie Detector — Experiment 0 viewer</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page:      #f9f9f7;
+    --surface:   #fcfcfb;
+    --ink:       #0b0b0b;
+    --ink-2:     #52514e;
+    --muted:     #898781;
+    --grid:      #e1e0d9;
+    --baseline:  #c3c2b7;
+    --border:    rgba(11,11,11,0.10);
+    --heat-rgb:  42 120 214;
+    --accent:    #2a78d6;
+    --match:     #006300;
+    --hl:        #eb6834;
+    --yes:       #c0392b;      /* Yes = "I was deceptive" (for Q1-3) */
+    --no:        #1f5fbf;
+    --seg-user:  rgba(42,120,214,0.10);
+    --seg-resp:  rgba(0,99,0,0.12);
+    --seg-q:     rgba(192,57,43,0.12);
+    --seg-gen:   rgba(137,135,129,0.18);
+    --seg-ans:   rgba(235,104,52,0.20);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --page: #0d0d0d; --surface: #1a1a19; --ink: #fff; --ink-2: #c3c2b7; --muted: #898781;
+      --grid: #2c2c2a; --baseline: #383835; --border: rgba(255,255,255,0.10);
+      --heat-rgb: 57 135 229; --accent: #3987e5; --match: #0ca30c; --hl: #d95926;
+      --yes: #e2574a; --no: #5b8fe0;
+      --seg-user: rgba(57,135,229,0.18); --seg-resp: rgba(12,163,12,0.18);
+      --seg-q: rgba(226,87,74,0.18); --seg-gen: rgba(137,135,129,0.25); --seg-ans: rgba(217,89,38,0.28);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #fff; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --baseline: #383835; --border: rgba(255,255,255,0.10);
+    --heat-rgb: 57 135 229; --accent: #3987e5; --match: #0ca30c; --hl: #d95926;
+    --yes: #e2574a; --no: #5b8fe0;
+    --seg-user: rgba(57,135,229,0.18); --seg-resp: rgba(12,163,12,0.18);
+    --seg-q: rgba(226,87,74,0.18); --seg-gen: rgba(137,135,129,0.25); --seg-ans: rgba(217,89,38,0.28);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 12px 16px 40px; background: var(--page); color: var(--ink);
+         font: 13px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  h1 { font-size: 16px; margin: 0; font-weight: 650; }
+  h2 { font-size: 13px; margin: 0 0 6px; font-weight: 650; color: var(--ink-2); }
+  a { color: var(--accent); }
+  select, button, input, label { font: inherit; color: inherit; }
+  select, button { background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
+                   padding: 3px 8px; cursor: pointer; }
+  button:hover, select:hover { border-color: var(--baseline); }
+  button.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; }
+  .bar .spacer { flex: 1; }
+  .tabs button { border-radius: 6px 6px 0 0; }
+  #status { color: var(--ink-2); font-size: 12px; }
+  #status.err { color: var(--hl); }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+          padding: 8px 12px; margin-bottom: 8px; }
+  #setup { max-width: 620px; margin: 40px auto; display: none; }
+  #setup code { background: var(--page); padding: 1px 5px; border-radius: 4px; }
+  .muted { color: var(--muted); font-size: 11px; }
+  .kv { display: flex; gap: 8px; align-items: baseline; line-height: 1.35; }
+  .kv > b { font-weight: 650; flex: 0 0 118px; font-size: 11px; color: var(--ink-2); }
+  .pre { white-space: pre-wrap; color: var(--ink); margin: 0; flex: 1; }
+  .lab { display: inline-block; font-size: 10px; padding: 0 5px; border-radius: 4px; margin-right: 4px;
+         border: 1px solid var(--border); color: var(--ink-2); }
+  .lab.yes { color: var(--yes); border-color: var(--yes); }
+  .lab.no  { color: var(--no);  border-color: var(--no); }
+
+  /* token ribbon */
+  #ribbon { display: flex; flex-wrap: wrap; gap: 2px; align-content: flex-start; max-height: 120px;
+            overflow-y: auto; padding: 8px 10px; }
+  .tok { padding: 0 3px; border-radius: 4px; cursor: pointer; white-space: pre; border: 1px solid transparent;
+         font-size: 12px; position: relative; }
+  .tok:hover { border-color: var(--baseline); }
+  .tok.system      { background: rgba(137,135,129,0.12); font-style: italic; }
+  .tok.user_prompt { background: var(--seg-user); }
+  .tok.response    { background: var(--seg-resp); }
+  .tok.self_q      { background: var(--seg-q); }
+  .tok.gen_prompt  { background: var(--seg-gen); }
+  .tok.prefill     { background: rgba(235,104,52,0.22); }
+  .tok.answer      { background: var(--seg-ans); }
+  .tok.sel { outline: 2px solid var(--accent); }
+  .tok .pm { position: absolute; top: -9px; left: 0; font-size: 8px; font-weight: 700; color: var(--hl);
+             line-height: 1; }
+  .tok.mark { margin-top: 8px; }
+  .legend span { display: inline-block; padding: 0 6px; border-radius: 4px; margin-right: 6px; font-size: 11px; }
+
+  /* heatmaps */
+  .heatwrap { overflow-x: auto; }
+  .heatrow { display: flex; gap: 10px; align-items: flex-start; }
+  .heat { position: relative; }
+  .heat canvas { display: block; image-rendering: pixelated; cursor: crosshair; }
+  .heat .ttl { font-size: 11px; color: var(--ink-2); margin-bottom: 3px; }
+  .heat .ttl b { color: var(--ink); }
+  .cbar { display: flex; align-items: center; gap: 4px; font-size: 10px; color: var(--muted); margin-top: 3px; }
+  .cbar canvas { height: 8px; width: 90px; border: 1px solid var(--border); }
+  #tip { position: fixed; pointer-events: none; background: var(--surface); border: 1px solid var(--border);
+         border-radius: 6px; padding: 4px 7px; font-size: 11px; display: none; z-index: 10; white-space: pre;
+         box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+
+  /* columns */
+  #colbar { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; flex-wrap: wrap; }
+  #cols { overflow: auto; max-height: 42vh; border: 1px solid var(--grid); border-radius: 6px; }
+  table.ro { border-collapse: collapse; width: 100%; font-size: 11px; }
+  table.ro th { position: sticky; top: 0; background: var(--surface); z-index: 2; text-align: left; font-weight: 650;
+                padding: 3px 6px; border-bottom: 1px solid var(--grid); color: var(--ink-2); }
+  table.ro td { padding: 0 6px; border-bottom: 1px solid var(--grid); height: 21px; white-space: nowrap; vertical-align: middle; }
+  table.ro tr.sel td { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+  table.ro tr:hover td { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  table.ro td.ll { color: var(--muted); font-variant-numeric: tabular-nums; width: 30px; }
+  table.ro td.sc { font-variant-numeric: tabular-nums; text-align: right; width: 48px; font-size: 10px; }
+  table.ro td.chips { overflow: hidden; text-overflow: ellipsis; max-width: 0; }
+  table.ro td.chips.j { border-left: 2px solid var(--grid); }
+  .chip { display: inline-block; padding: 0 4px; border-radius: 3px; font-size: 11px; white-space: pre; cursor: pointer;
+          max-width: 9em; overflow: hidden; text-overflow: ellipsis; border: 1px solid transparent; margin-right: 2px;
+          vertical-align: middle; line-height: 15px; }
+  .chip:hover { border-color: var(--baseline); }
+  .chip.match { border-color: var(--match); text-decoration: underline; text-decoration-color: var(--match); }
+  .chip.yes { border-color: var(--yes); }
+  .chip.no  { border-color: var(--no); }
+  .chip.hl { outline: 2px solid var(--hl); }
+  .chip .p { color: var(--ink-2); font-size: 10px; margin-left: 3px; }
+
+  /* aggregate */
+  table.t { border-collapse: collapse; font-size: 12px; }
+  table.t td, table.t th { border-bottom: 1px solid var(--grid); padding: 2px 8px; text-align: left; }
+  .svgchart { background: var(--surface); }
+  details.help { margin-top: 14px; color: var(--ink-2); font-size: 12px; max-width: 860px; }
+  details.help summary { cursor: pointer; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <h1>J-Lens lie detector · Experiment 0</h1>
+  <select id="modelSel"></select>
+  <span class="tabs">
+    <button id="tabExplore" class="on">explore</button><button id="tabAgg">aggregate</button>
+  </span>
+  <span id="status"></span>
+  <span class="spacer"></span>
+  <button id="themeBtn" title="theme">◐</button>
+</div>
+
+<div id="setup" class="card">
+  <h1>Load an export</h1>
+  <p>This page reads <code>exports/&lt;model&gt;/manifest.json</code>, <code>aggregate.json</code> and the per-sequence JSONs
+     written by <code>src/readout.py</code> / <code>src/analyze.py</code>.</p>
+  <p><b>1 · Serve over HTTP (recommended)</b> — from the project root run <code>python3 -m http.server 8000</code>,
+     then open <code>http://localhost:8000/viewer/</code>.</p>
+  <p><b>2 · Opened as file://?</b> Pick the <code>exports</code> folder (files are read locally, nothing is uploaded):
+     <input type="file" id="dirPick" webkitdirectory multiple></p>
+  <p id="setupmsg" style="color: var(--hl)"></p>
+</div>
+
+<div id="app" style="display:none">
+
+  <!-- ============================ EXPLORE ============================ -->
+  <div id="explore">
+    <div class="bar">
+      <label>fact <select id="factSel"></select></label>
+      <label>condition <select id="condSel"></select></label>
+      <label>format <select id="fmtSel"></select></label>
+      <label>said <select id="ansSel"></select></label>
+      <button id="prevBtn" title="previous sequence">‹</button>
+      <button id="nextBtn" title="next sequence">›</button>
+      <button id="swapBtn" title="swap truth/lie for the same fact">⇄ condition</button>
+      <span class="spacer"></span>
+      <label><input type="checkbox" id="winChk"> self-report window only</label>
+      <label><input type="checkbox" id="shareChk" checked> shared colour scale</label>
+      <label><input type="checkbox" id="probsChk"> probs</label>
+      <label><input type="checkbox" id="flipChk"> final layer first</label>
+    </div>
+
+    <div class="card" id="itemcard">
+      <div id="itemmeta" class="muted"></div>
+      <div class="kv"><b>user prompt</b><div class="pre" id="uprompt"></div></div>
+      <div class="kv"><b>response</b><div class="pre" id="uresp"></div></div>
+      <div class="kv"><b>self-report q</b><div class="pre" id="uq"></div></div>
+      <div class="kv" id="uprefillrow" style="display:none"><b>prefill → contin.</b><div class="pre" id="uprefill"></div></div>
+      <div class="kv"><b>model answer</b><div class="pre"><span id="uans"></span></div></div>
+    </div>
+
+    <div class="card">
+      <div class="legend muted" style="margin-bottom:4px">
+        <span class="tok system">system</span><span class="tok user_prompt">user prompt</span><span class="tok response">response</span>
+        <span class="tok self_q">self-report q</span><span class="tok gen_prompt">gen prompt</span>
+        <span class="tok prefill">prefill</span><span class="tok answer">generated answer</span>
+        · P0 = last response token · P2 = last prompt token (next token = answer) · P3 = generated Yes/No token ·
+        click a token / heat cell → position · ←/→ step (⇧ ×10)
+      </div>
+      <div id="ribbon"></div>
+      <div id="posinfo" style="margin-top:6px;font-size:12px"></div>
+    </div>
+
+    <div class="card" style="padding-bottom:6px">
+      <div id="colbar">
+        <h2 style="margin:0">readout at <span id="colpos"></span></h2>
+        <label>top-k <select id="kSel"><option>3</option><option>5</option><option selected>8</option><option>12</option><option>16</option></select></label>
+        <span class="muted" id="kNote"></span>
+        <span class="muted">chip depth = probability (log) · <span style="color:var(--match);font-weight:700">green underline</span> = actual next token ·
+          <span style="color:var(--yes)">red border</span> = Yes · <span style="color:var(--no)">blue border</span> = No ·
+          number = s (Yes − No) at that layer · click a chip to highlight it · double-click a row to select the layer</span>
+      </div>
+      <div id="cols"></div>
+    </div>
+
+    <div class="card">
+      <h2>Yes − No score  s<sub>ℓ,t</sub> = log Σ<sub>Yes</sub> e<sup>z</sup> − log Σ<sub>No</sub> e<sup>z</sup>
+        &nbsp;<span class="muted">red = Yes-leaning, blue = No-leaning · rows = layers (0 at bottom) · dotted = P0 / P2 / P3</span></h2>
+      <div class="heatwrap"><div class="heatrow" id="heats"></div></div>
+    </div>
+  </div>
+
+  <!-- ============================ AGGREGATE ============================ -->
+  <div id="aggregate" style="display:none">
+    <div class="bar">
+      <label>format <select id="aggFmtSel"></select></label>
+      <label>panel <select id="aggPanelSel">
+        <option value="means">truth mean · lie mean · lie − truth</option>
+        <option value="auroc">AUROC (lie &gt; truth) · Cohen's d</option>
+      </select></label>
+      <span id="aggInfo" class="muted"></span>
+    </div>
+    <div class="card" id="aggBeh"></div>
+    <div class="card">
+      <h2>layer × aligned position  <span class="muted">columns: P0, then every token of the self-report segment through P2, then P3</span></h2>
+      <div class="heatwrap"><div id="aggHeatsJ" class="heatrow"></div></div>
+      <div class="heatwrap" style="margin-top:10px"><div id="aggHeatsLL" class="heatrow"></div></div>
+    </div>
+    <div class="card">
+      <h2>AUROC by layer at P0 / P2 / P3 — J-lens (solid) vs logit lens (dashed) ·
+        target <select id="aggTargetSel">
+          <option value="lied">lied (lie vs truth, all items)</option>
+          <option value="says_yes">says-yes (answer identity)</option>
+          <option value="lied_within_said_no">lied | said No (answer-controlled)</option>
+        </select> <span id="aggTargetInfo" class="muted"></span></h2>
+      <div id="aggLines" style="display:flex;gap:14px;flex-wrap:wrap"></div>
+    </div>
+    <div class="card">
+      <h2>example transcripts — top-k tokens at P2 (J-lens · logit lens)</h2>
+      <div id="aggEx"></div>
+    </div>
+  </div>
+
+  <details class="help">
+    <summary>notes</summary>
+    <p>Both lenses read exactly the same cached residual activations. <b>LL</b> = logit lens (unembed(h)); <b>J</b> = Jacobian
+    lens (unembed(J<sub>ℓ</sub>h), published neuronpedia/jacobian-lens lens; identity at the final layer, so the final
+    J row is the model's own logits). The Yes/No token sets are fixed per tokenizer (see manifest). For the inverted
+    format Q4 (“truthful?”) the expected direction flips; the aggregate tab orients scores so that higher = “I lied”.
+    Scores are raw logit differences, not calibrated lie probabilities (plan §14).</p>
+  </details>
+</div>
+<div id="tip"></div>
+
+<script>
+"use strict";
+
+const CANDIDATE_SLUGS = ["gemma_3_4b_it", "gemma_3_4b_it__prefilled", "gemma_3_4b_it__answeronly", "gemma_3_12b_it", "gemma_3_1b_it", "qwen3_1_7b", "qwen3_6_27b", "gpt2"];
+const LENS_LABELS = { J: "J-lens", LL: "logit lens" };
+const SEG_ORDER = ["user_prompt", "response", "self_q", "gen_prompt", "prefill", "answer"];
+
+const state = {
+  slug: null, manifest: null, agg: null, item: null,
+  pos: 0, layer: null, tab: "explore",
+  win: false, share: true, showProbs: false, flip: false, highlight: null, k: 8,
+  aggFmt: null, aggPanel: "means", aggTarget: "lied",
+};
+const pending = { seq: null, pos: null, fmt: null, tab: null };
+
+// ---------- data source ----------
+const source = { mode: "http", files: null };
+const cache = new Map();
+async function loadJSON(slug, name) {
+  if (source.mode === "files") {
+    const f = source.files.get(slug + "/" + name);
+    if (!f) throw new Error("not in picked folder: " + slug + "/" + name);
+    return JSON.parse(await f.text());
+  }
+  const r = await fetch("../exports/" + slug + "/" + encodeURIComponent(name));
+  if (!r.ok) throw new Error(r.status + " " + r.statusText + " (" + name + ")");
+  return r.json();
+}
+async function loadItem(slug, id) {
+  const key = slug + "/" + id;
+  if (cache.has(key)) { const v = cache.get(key); cache.delete(key); cache.set(key, v); return v; }
+  const d = await loadJSON(slug, id + ".json");
+  cache.set(key, d);
+  while (cache.size > 8) cache.delete(cache.keys().next().value);
+  return d;
+}
+
+// ---------- helpers ----------
+const $ = id => document.getElementById(id);
+const setStatus = (m, err) => { $("status").textContent = m; $("status").className = err ? "err" : ""; };
+function disp(s) {
+  if (s == null) return "�";
+  let out = s.replace(/\n/g, "⏎").replace(/\t/g, "⇥");
+  if (/^ +/.test(out)) out = out.replace(/^ +/, m => "␣".repeat(m.length));
+  if (out.trim() === "" && !/[␣⏎⇥]/.test(out)) out = "␣".repeat(out.length) || "∅";
+  return out;
+}
+function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+function fmtProb(p) { if (p >= 0.095) return Math.round(p * 100) + "%"; if (p >= 0.001) return (p * 100).toFixed(1) + "%"; return p.toExponential(0); }
+function heatAlpha(p) { const a = Math.max(0, Math.min(1, (Math.log10(Math.max(p, 1e-6)) + 4) / 4)); return 0.85 * a; }
+const fmt2 = v => (v == null || Number.isNaN(v)) ? "—" : (Math.abs(v) >= 100 ? v.toFixed(0) : v.toFixed(2));
+
+// colour maps -------------------------------------------------------
+function lerp(a, b, t) { return a + (b - a) * t; }
+function interp(stops, t) {
+  t = Math.max(0, Math.min(1, t));
+  const n = stops.length - 1, i = Math.min(n - 1, Math.floor(t * n)), f = t * n - i;
+  const a = stops[i], b = stops[i + 1];
+  return [lerp(a[0], b[0], f), lerp(a[1], b[1], f), lerp(a[2], b[2], f)].map(Math.round);
+}
+const RDBU = [[33, 102, 172], [103, 169, 207], [209, 229, 240], [247, 247, 247], [253, 219, 199], [239, 138, 98], [178, 24, 43]];
+const VIRIDIS = [[68, 1, 84], [72, 40, 120], [62, 74, 137], [49, 104, 142], [38, 130, 142], [31, 158, 137], [53, 183, 121], [109, 205, 89], [180, 222, 44], [253, 231, 37]];
+const PUOR = [[127, 59, 8], [224, 130, 20], [253, 184, 99], [247, 247, 247], [178, 171, 210], [128, 115, 172], [84, 39, 136]].reverse();
+function divColor(v, vmax, stops) { return interp(stops, 0.5 + 0.5 * (v / vmax)); }
+function seqColor(v, lo, hi, stops) { return interp(stops, (v - lo) / (hi - lo)); }
+function css(rgb) { return "rgb(" + rgb.join(",") + ")"; }
+function isDark() {
+  const th = document.documentElement.dataset.theme;
+  return th === "dark" || (!th && matchMedia("(prefers-color-scheme: dark)").matches);
+}
+
+// ---------- generic heatmap (canvas) ----------
+// M: rows (layers, index 0 = layer 0) x cols. Drawn with row 0 at the bottom.
+// opts: {layers, colLabels, cw, ch, mode:'div'|'seq', vmax|lo/hi, stops, markers:[{col,label}],
+//        sel:{col,row}, onHover(col,row,v), onClick(col,row), title}
+function makeHeat(M, opts) {
+  const nR = M.length, nC = nR ? M[0].length : 0;
+  const cw = opts.cw || 9, ch = opts.ch || 7, labH = opts.colLabels ? 58 : 0, axW = 28;
+  const wrap = document.createElement("div");
+  wrap.className = "heat";
+  if (opts.title) { const t = document.createElement("div"); t.className = "ttl"; t.innerHTML = opts.title; wrap.appendChild(t); }
+  const cv = document.createElement("canvas");
+  const W = axW + nC * cw, H = nR * ch + labH;
+  cv.width = W * devicePixelRatio; cv.height = H * devicePixelRatio;
+  cv.style.width = W + "px"; cv.style.height = H + "px";
+  const g = cv.getContext("2d");
+  g.scale(devicePixelRatio, devicePixelRatio);
+  const dark = isDark();
+  const color = v => {
+    if (v == null || Number.isNaN(v)) return dark ? "#2c2c2a" : "#e9e8e2";
+    return css(opts.mode === "seq" ? seqColor(v, opts.lo, opts.hi, opts.stops) : divColor(v, opts.vmax, opts.stops));
+  };
+  for (let r = 0; r < nR; r++) for (let c = 0; c < nC; c++) {
+    g.fillStyle = color(M[r][c]);
+    g.fillRect(axW + c * cw, (nR - 1 - r) * ch, cw, ch);
+  }
+  // y axis labels
+  g.fillStyle = dark ? "#898781" : "#898781"; g.font = "9px system-ui"; g.textAlign = "right"; g.textBaseline = "middle";
+  const step = Math.max(1, Math.round(nR / 9));
+  for (let r = 0; r < nR; r += step) g.fillText(String(opts.layers ? opts.layers[r] : r), axW - 3, (nR - 1 - r) * ch + ch / 2);
+  // markers
+  for (const m of opts.markers || []) {
+    if (m.col == null) continue;
+    g.strokeStyle = dark ? "rgba(255,255,255,.75)" : "rgba(0,0,0,.7)"; g.setLineDash([2, 2]); g.lineWidth = 1;
+    g.beginPath(); g.moveTo(axW + m.col * cw + cw / 2, 0); g.lineTo(axW + m.col * cw + cw / 2, nR * ch); g.stroke();
+    g.setLineDash([]);
+    g.fillStyle = dark ? "#fff" : "#000"; g.font = "bold 9px system-ui"; g.textAlign = "center"; g.textBaseline = "top";
+    g.fillText(m.label, axW + m.col * cw + cw / 2, nR * ch + 1);
+  }
+  // column labels (rotated tokens)
+  if (opts.colLabels) {
+    g.fillStyle = dark ? "#c3c2b7" : "#52514e"; g.font = "9px system-ui"; g.textAlign = "right"; g.textBaseline = "middle";
+    for (let c = 0; c < nC; c++) {
+      g.save(); g.translate(axW + c * cw + cw / 2, nR * ch + 12); g.rotate(-Math.PI / 2);
+      g.fillText(disp(opts.colLabels[c]).slice(0, 9), 0, 0); g.restore();
+    }
+  }
+  // selection
+  if (opts.sel && opts.sel.col != null) {
+    g.strokeStyle = "#eb6834"; g.lineWidth = 1.5;
+    g.strokeRect(axW + opts.sel.col * cw + 0.5, 0.5, cw - 1, nR * ch - 1);
+    if (opts.sel.row != null) g.strokeRect(axW + opts.sel.col * cw - 1, (nR - 1 - opts.sel.row) * ch - 1, cw + 2, ch + 2);
+  }
+  const cellAt = e => {
+    const rect = cv.getBoundingClientRect();
+    const c = Math.floor((e.clientX - rect.left - axW) / cw), r = nR - 1 - Math.floor((e.clientY - rect.top) / ch);
+    return (c < 0 || c >= nC || r < 0 || r >= nR) ? null : { c, r };
+  };
+  const tip = $("tip");
+  cv.addEventListener("mousemove", e => {
+    const p = cellAt(e);
+    if (!p) { tip.style.display = "none"; return; }
+    const v = M[p.r][p.c];
+    tip.textContent = (opts.onHover ? opts.onHover(p.c, p.r, v) : ("col " + p.c + " layer " + p.r + "  " + fmt2(v)));
+    tip.style.display = "block"; tip.style.left = (e.clientX + 12) + "px"; tip.style.top = (e.clientY + 12) + "px";
+  });
+  cv.addEventListener("mouseleave", () => { tip.style.display = "none"; });
+  if (opts.onClick) cv.addEventListener("click", e => { const p = cellAt(e); if (p) opts.onClick(p.c, p.r); });
+  wrap.appendChild(cv);
+  // colour bar
+  const cb = document.createElement("div"); cb.className = "cbar";
+  const bc = document.createElement("canvas"); bc.width = 90; bc.height = 8;
+  const bg = bc.getContext("2d");
+  for (let i = 0; i < 90; i++) { bg.fillStyle = css(interp(opts.stops, i / 89)); bg.fillRect(i, 0, 1, 8); }
+  const lo = opts.mode === "seq" ? opts.lo : -opts.vmax, hi = opts.mode === "seq" ? opts.hi : opts.vmax;
+  cb.innerHTML = "<span>" + fmt2(lo) + "</span>"; cb.appendChild(bc);
+  const hs = document.createElement("span"); hs.textContent = fmt2(hi); cb.appendChild(hs);
+  wrap.appendChild(cb);
+  return wrap;
+}
+
+// ====================================================================
+// EXPLORE
+// ====================================================================
+function segOf(it, pos) {
+  for (const s of it.segments) if (pos >= s.start && pos < s.end) return s.name;
+  return null;
+}
+function markersOf(it) {
+  return [{ col: it.P0, label: "P0" }, { col: it.P2, label: "P2" }, { col: it.P3, label: "P3" }];
+}
+function windowRange(it) {
+  // 'self-report window' = from P0 to the end (covers the question, gen prompt,
+  // answer). Prefill items without a response segment (P0 null) anchor on P2.
+  const a = it.P0 != null ? it.P0 : Math.max(0, it.P2 - 8);
+  return state.win ? [a, it.tokens.length] : [0, it.tokens.length];
+}
+
+function renderItemCard() {
+  const it = state.item, mf = state.manifest;
+  $("itemmeta").textContent = mf.model + " · " + it.seq_id + " · " + it.tokens.length + " tokens · layers " +
+    it.layers[0] + "–" + it.layers[it.layers.length - 1] + " · correct answer: " + it.answer;
+  $("uprompt").textContent = it.user_prompt;
+  $("uresp").textContent = it.response;
+  $("uq").textContent = it.self_q || "— (no self-report turn: the response turn itself is prefilled)";
+  const pf = it.segments.find(s => s.name === "prefill");
+  $("uprefillrow").style.display = pf ? "" : "none";
+  if (pf) $("uprefill").textContent =
+    it.tokens.slice(pf.start, pf.end).join("") + "  ⟶  " + it.answer_text;
+  const lab = it.answer_label;
+  $("uans").innerHTML = "<span class='lab " + lab + "'>" + lab + "</span> " + esc(JSON.stringify(it.answer_text)) +
+    " <span class='muted'>· model Yes−No logit at P2 = " + fmt2(it.model_yes_minus_no) +
+    (it.P3 == null ? " · no Yes/No token generated (P3 missing)" : "") + "</span>";
+}
+
+let posEls = {};
+function renderRibbon() {
+  const it = state.item, rb = $("ribbon");
+  rb.innerHTML = ""; posEls = {};
+  const marks = { [it.P0]: "P0", [it.P2]: "P2" };
+  if (it.P3 != null) marks[it.P3] = "P3";
+  for (let p = 0; p < it.tokens.length; p++) {
+    const el = document.createElement("span");
+    el.className = "tok " + (segOf(it, p) || "");
+    el.textContent = disp(it.tokens[p]);
+    el.title = "pos " + p + (segOf(it, p) ? " · " + segOf(it, p) : "");
+    if (marks[p]) { el.classList.add("mark"); const m = document.createElement("span"); m.className = "pm"; m.textContent = marks[p]; el.appendChild(m); }
+    el.addEventListener("click", () => selectPos(p));
+    rb.appendChild(el); posEls[p] = el;
+  }
+}
+function updateSelection() {
+  const it = state.item;
+  document.querySelectorAll("#ribbon .tok.sel").forEach(e => e.classList.remove("sel"));
+  const el = posEls[state.pos];
+  if (el) {
+    el.classList.add("sel");
+    const rb = $("ribbon"), top = el.offsetTop - rb.offsetTop, bot = top + el.offsetHeight;
+    if (top < rb.scrollTop) rb.scrollTop = top - 4;
+    else if (bot > rb.scrollTop + rb.clientHeight) rb.scrollTop = bot - rb.clientHeight + 4;
+  }
+  const p = state.pos, T = it.tokens.length;
+  const tags = [];
+  if (p === it.P0) tags.push("P0"); if (it.P1 && p >= it.P1[0] && p < it.P1[1]) tags.push("P1"); if (p === it.P2) tags.push("P2"); if (p === it.P3) tags.push("P3");
+  $("posinfo").innerHTML = "<b>pos " + p + "</b>/" + (T - 1) + " · token “" + esc(disp(it.tokens[p])) + "” · " + (segOf(it, p) || "—") +
+    (tags.length ? " · <b>" + tags.join(" ") + "</b>" : "") + " · actual next → " +
+    (p + 1 < T ? "<span style='color:var(--match);font-weight:650'>" + esc(disp(it.tokens[p + 1])) + "</span>" : "<i>(end)</i>") +
+    (state.layer != null ? " · selected layer <b>L" + state.layer + "</b>" : "");
+}
+
+function renderHeats() {
+  const it = state.item, cont = $("heats");
+  cont.style.minHeight = cont.offsetHeight + "px";   // keep page height stable during re-render (no scroll jump)
+  cont.innerHTML = "";
+  const [a, b] = windowRange(it);
+  const li = state.layer == null ? null : it.layers.indexOf(state.layer);
+  let vmaxAll = 0;
+  for (const lens of ["J", "LL"]) for (const row of it.scores[lens]) for (let c = a; c < b; c++) vmaxAll = Math.max(vmaxAll, Math.abs(row[c]));
+  for (const lens of ["J", "LL"]) {
+    const M = it.scores[lens].map(row => row.slice(a, b));
+    let vmax = vmaxAll;
+    if (!state.share) { vmax = 0; for (const row of M) for (const v of row) vmax = Math.max(vmax, Math.abs(v)); }
+    const sAt = (p, l) => it.scores[lens][l][p];
+    cont.appendChild(makeHeat(M, {
+      title: "<b>" + LENS_LABELS[lens] + "</b>" +
+        (it.P0 != null ? " · s at P0 (L" + it.layers[it.layers.length - 2] + ") = " + fmt2(sAt(it.P0, it.layers.length - 2)) : "") +
+        " · at P2 (final) = " + fmt2(sAt(it.P2, it.layers.length - 1)),
+      layers: it.layers, colLabels: it.tokens.slice(a, b), cw: state.win ? 14 : 9, ch: 7,
+      mode: "div", vmax: vmax || 1, stops: RDBU,
+      markers: markersOf(it).filter(m => m.col != null).map(m => ({ col: m.col - a, label: m.label })),
+      sel: { col: state.pos - a, row: li },
+      onHover: (c, r, v) => "pos " + (c + a) + " “" + disp(it.tokens[c + a]) + "”  L" + it.layers[r] + "\n" + lens + " Yes−No = " + fmt2(v),
+      onClick: (c, r) => { state.layer = it.layers[r]; selectPos(c + a); },
+    }));
+  }
+  requestAnimationFrame(() => { cont.style.minHeight = ""; });
+}
+
+function renderColumns() {
+  const it = state.item, cont = $("cols");
+  const keepScroll = cont.scrollTop;
+  const nextStr = state.pos + 1 < it.tokens.length ? it.tokens[state.pos + 1] : null;
+  const yesIds = new Set(Object.values(state.manifest.yes_tokens).map(String));
+  const noIds = new Set(Object.values(state.manifest.no_tokens).map(String));
+  const order = it.layers.map((_, i) => i);
+  if (state.flip) order.reverse();
+  $("colpos").textContent = "pos " + state.pos + " “" + disp(it.tokens[state.pos]) + "”";
+  const tbl = document.createElement("table"); tbl.className = "ro";
+  tbl.innerHTML = "<tr><th>L</th><th style='text-align:right'>s LL</th><th>" + LENS_LABELS.LL + " top-" + state.k +
+    "</th><th style='text-align:right'>s J</th><th>" + LENS_LABELS.J + " top-" + state.k + "</th></tr>";
+  const tip = $("tip");
+  const chipsFor = (lens, li) => {
+    const td = document.createElement("td"); td.className = "chips" + (lens === "J" ? " j" : "");
+    let rank = 0;
+    for (const [tid, prob] of it.readout[lens][li][state.pos].slice(0, state.k)) {
+      rank++;
+      const raw = it.vocab[String(tid)];
+      const chip = document.createElement("span"); chip.className = "chip";
+      chip.style.background = "rgb(var(--heat-rgb) / " + heatAlpha(prob).toFixed(3) + ")";
+      chip.textContent = disp(raw);
+      const info = LENS_LABELS[lens] + " L" + it.layers[li] + " · rank " + rank + "\n" +
+        JSON.stringify(raw) + " · id " + tid + "\np = " + prob + "  (" + fmtProb(prob) + ")";
+      chip.addEventListener("mousemove", e => {
+        tip.textContent = info;
+        tip.style.display = "block"; tip.style.left = (e.clientX + 12) + "px"; tip.style.top = (e.clientY + 14) + "px";
+      });
+      chip.addEventListener("mouseleave", () => { tip.style.display = "none"; });
+      if (nextStr !== null && raw === nextStr) chip.classList.add("match");
+      if (yesIds.has(String(tid))) chip.classList.add("yes");
+      if (noIds.has(String(tid))) chip.classList.add("no");
+      if (state.highlight !== null && raw === state.highlight) chip.classList.add("hl");
+      if (state.showProbs) { const ps = document.createElement("span"); ps.className = "p"; ps.textContent = fmtProb(prob); chip.appendChild(ps); }
+      chip.addEventListener("click", e => { e.stopPropagation(); state.highlight = state.highlight === raw ? null : raw; renderColumns(); });
+      td.appendChild(chip);
+    }
+    return td;
+  };
+  for (const li of order) {
+    const tr = document.createElement("tr");
+    if (it.layers[li] === state.layer) tr.classList.add("sel");
+    const ll = document.createElement("td"); ll.className = "ll"; ll.textContent = "L" + it.layers[li]; tr.appendChild(ll);
+    for (const lens of ["LL", "J"]) {
+      const s = it.scores[lens][li][state.pos];
+      const sc = document.createElement("td"); sc.className = "sc"; sc.textContent = fmt2(s);
+      sc.style.color = s > 0 ? "var(--yes)" : "var(--no)"; tr.appendChild(sc);
+      tr.appendChild(chipsFor(lens, li));
+    }
+    tr.addEventListener("dblclick", () => { state.layer = it.layers[li]; renderHeats(); renderColumns(); updateSelection(); });
+    tbl.appendChild(tr);
+  }
+  cont.replaceChildren(tbl);
+  cont.scrollTop = keepScroll;
+  tip.style.display = "none";
+  $("kNote").textContent = state.k > it.top_k ? "(export has top-" + it.top_k + " — rerun stage 3 with --top-k " + state.k + " for more)" : "";
+}
+
+function selectPos(p) {
+  const T = state.item.tokens.length;
+  state.pos = Math.max(0, Math.min(T - 1, p));
+  const y = window.scrollY;
+  updateSelection(); renderHeats(); renderColumns(); updateHash();
+  if (window.scrollY !== y) window.scrollTo(0, y);
+}
+document.addEventListener("keydown", e => {
+  if (!state.item || state.tab !== "explore" || ["SELECT", "INPUT"].includes(e.target.tagName)) return;
+  const step = e.shiftKey ? 10 : 1;
+  if (e.key === "ArrowLeft") { selectPos(state.pos - step); e.preventDefault(); }
+  if (e.key === "ArrowRight") { selectPos(state.pos + step); e.preventDefault(); }
+});
+
+// selectors -----------------------------------------------------------
+function seqIdOf(fact, cond, fmt) { return fact + "__" + cond + "__" + fmt; }
+function filteredItems() {
+  // items matching the condition / format / said (self-report answer) filters
+  const mf = state.manifest, cond = $("condSel").value, fmt = $("fmtSel").value, ans = $("ansSel").value;
+  return mf.items.filter(i => (!cond || i.condition === cond) && (!fmt || i.format === fmt) &&
+                              (!ans || i.answer_label === ans));
+}
+function refillFacts() {
+  const sel = $("factSel"), prev = sel.value;
+  const facts = [...new Set(filteredItems().map(i => i.fact_id))];
+  sel.innerHTML = "";
+  for (const v of facts) { const o = document.createElement("option"); o.value = v; o.textContent = v; sel.appendChild(o); }
+  if (facts.includes(prev)) sel.value = prev;
+  $("ansSel").title = facts.length + " facts match";
+}
+function fillSelectors() {
+  const mf = state.manifest;
+  const conds = [...new Set(mf.items.map(i => i.condition))];
+  const fmts = [...new Set(mf.items.map(i => i.format))].sort();
+  const anss = [...new Set(mf.items.map(i => i.answer_label))].sort();
+  const fill = (sel, vals, labelOf) => { sel.innerHTML = ""; for (const v of vals) { const o = document.createElement("option"); o.value = v; o.textContent = labelOf ? labelOf(v) : v; sel.appendChild(o); } };
+  fill($("condSel"), conds);
+  fill($("fmtSel"), fmts);
+  fill($("ansSel"), [""].concat(anss), v => v === "" ? "all" : v);
+  refillFacts();
+}
+function currentSeqId() { return seqIdOf($("factSel").value, $("condSel").value, $("fmtSel").value); }
+function resolveSeq(id) {
+  const mf = state.manifest;
+  if (mf.items.some(i => i.seq_id === id)) return id;
+  const [fact, cond] = id.split("__");
+  const alt = mf.items.find(i => i.fact_id === fact && i.condition === cond) || mf.items.find(i => i.fact_id === fact) || mf.items[0];
+  return alt.seq_id;
+}
+function setSelectorsFrom(id) {
+  const [fact, cond, fmt] = id.split("__");
+  $("condSel").value = cond; $("fmtSel").value = fmt;
+  refillFacts();
+  $("factSel").value = fact;
+}
+async function showSeq(id, keepPos) {
+  id = resolveSeq(id);
+  setStatus("loading " + id + " …");
+  try { state.item = await loadItem(state.slug, id); }
+  catch (err) { setStatus("failed: " + err.message, true); throw err; }
+  setSelectorsFrom(id);
+  setStatus(state.item.tokens.length + " positions");
+  const it = state.item;
+  if (pending.pos !== null && !isNaN(+pending.pos)) state.pos = Math.max(0, Math.min(it.tokens.length - 1, +pending.pos));
+  else if (!keepPos || state.pos >= it.tokens.length) state.pos = it.P2;
+  pending.pos = null;
+  if (state.layer == null) state.layer = it.layers[Math.floor(it.layers.length * 0.6)];
+  state.highlight = null;
+  renderItemCard(); renderRibbon(); updateSelection(); renderHeats(); renderColumns(); updateHash();
+}
+function stepSeq(d) {
+  // step within the filtered set so prev/next respect condition/format/said
+  let ids = filteredItems().map(i => i.seq_id);
+  if (!ids.length) ids = state.manifest.items.map(i => i.seq_id);
+  const k = ids.indexOf(state.item.seq_id);
+  showSeq(ids[(k + d + ids.length) % ids.length], false).catch(() => {});
+}
+$("factSel").addEventListener("change", () => showSeq(currentSeqId(), true).catch(() => {}));
+for (const id of ["condSel", "fmtSel", "ansSel"]) $(id).addEventListener("change", () => {
+  refillFacts();
+  showSeq(currentSeqId(), true).catch(() => {});
+});
+$("prevBtn").addEventListener("click", () => stepSeq(-1));
+$("nextBtn").addEventListener("click", () => stepSeq(1));
+$("swapBtn").addEventListener("click", () => {
+  const it = state.item; const cond = it.condition === "lie" ? "truth" : "lie";
+  // keep the same *relative* position (anchored on P2) when swapping
+  const rel = state.pos - it.P2;
+  showSeq(seqIdOf(it.fact_id, cond, it.format), false).then(() => { selectPos(state.item.P2 + rel); }).catch(() => {});
+});
+$("winChk").addEventListener("change", e => { state.win = e.target.checked; renderHeats(); });
+$("shareChk").addEventListener("change", e => { state.share = e.target.checked; renderHeats(); });
+$("probsChk").addEventListener("change", e => { state.showProbs = e.target.checked; renderColumns(); });
+$("kSel").addEventListener("change", e => { state.k = +e.target.value; renderColumns(); });
+$("flipChk").addEventListener("change", e => { state.flip = e.target.checked; renderColumns(); });
+
+// ====================================================================
+// AGGREGATE
+// ====================================================================
+function renderAggregate() {
+  const agg = state.agg;
+  if (!agg) { $("aggBeh").innerHTML = "<span class='muted'>no aggregate.json for this model — run src/analyze.py</span>"; return; }
+  const fmts = Object.keys(agg.formats).sort();
+  const sel = $("aggFmtSel");
+  if (sel.options.length !== fmts.length) { sel.innerHTML = ""; for (const f of fmts) { const o = document.createElement("option"); o.value = f; o.textContent = f + " — " + agg.formats[f].self_q; sel.appendChild(o); } }
+  if (!state.aggFmt || !agg.formats[state.aggFmt]) state.aggFmt = fmts[0];
+  sel.value = state.aggFmt;
+  const fd = agg.formats[state.aggFmt];
+  $("aggInfo").textContent = "n truth = " + fd.n.truth + ", n lie = " + fd.n.lie + " · scores oriented so higher = “I lied” (lie ⇒ " + fd.lie_means + ")";
+  const b = fd.behavior;
+  $("aggBeh").innerHTML = "<h2>behavioral self-report (baseline 1)</h2>" +
+    "lies that answer “" + fd.lie_means + "”: <b>" + b.lie_says_lied + "/" + fd.n.lie + "</b> · truths that answer the opposite: <b>" +
+    b.truth_says_truthful + "/" + fd.n.truth + "</b> · other: " + b.other + " · P3 missing: " + b.p3_missing +
+    " · model Yes−No logit AUROC at P2: <b>" + fmt2(b.model_logit_auroc) + "</b>" +
+    "<table class='t' style='margin-top:6px'><tr><th>lens</th><th>best AUROC @P0</th><th>@P2</th><th>@P3</th></tr>" +
+    ["J", "LL"].map(l => { const bb = fd.lenses[l].best; const c = k => bb[k] ? fmt2(bb[k].auroc) + " (L" + bb[k].layer + ")" : "—";
+      return "<tr><td>" + LENS_LABELS[l] + "</td><td>" + c("P0") + "</td><td>" + c("P2") + "</td><td>" + c("P3") + "</td></tr>"; }).join("") + "</table>";
+
+  const markers = fd.col_kind.map((k, i) => ({ col: i, label: k })).filter(m => ["P0", "P2", "P3"].includes(m.label));
+  for (const lens of ["J", "LL"]) {
+    const cont = $("aggHeats" + lens); cont.innerHTML = "";
+    const d = fd.lenses[lens];
+    const hover = name => (c, r, v) => fd.col_labels[c] === "P0" || fd.col_labels[c] === "P3" ? fd.col_labels[c] : "“" + disp(fd.col_labels[c]) + "”" + "  L" + agg.layers[r] + "\n" + name + " = " + fmt2(v);
+    if (state.aggPanel === "means") {
+      let vmax = 0;
+      for (const M of [d.truth_mean, d.lie_mean]) for (const row of M) for (const v of row) if (v != null) vmax = Math.max(vmax, Math.abs(v));
+      let dmax = 0; for (const row of d.diff) for (const v of row) if (v != null) dmax = Math.max(dmax, Math.abs(v));
+      cont.appendChild(makeHeat(d.truth_mean, { title: "<b>" + LENS_LABELS[lens] + "</b> · truth mean s", layers: agg.layers, colLabels: fd.col_labels, cw: 16, ch: 7, mode: "div", vmax: vmax || 1, stops: RDBU, markers, onHover: hover("truth mean") }));
+      cont.appendChild(makeHeat(d.lie_mean, { title: "<b>" + LENS_LABELS[lens] + "</b> · lie mean s", layers: agg.layers, colLabels: fd.col_labels, cw: 16, ch: 7, mode: "div", vmax: vmax || 1, stops: RDBU, markers, onHover: hover("lie mean") }));
+      cont.appendChild(makeHeat(d.diff, { title: "<b>" + LENS_LABELS[lens] + "</b> · lie − truth", layers: agg.layers, colLabels: fd.col_labels, cw: 16, ch: 7, mode: "div", vmax: dmax || 1, stops: PUOR, markers, onHover: hover("lie − truth") }));
+    } else {
+      let dmax = 0; for (const row of d.cohens_d) for (const v of row) if (v != null) dmax = Math.max(dmax, Math.abs(v));
+      cont.appendChild(makeHeat(d.auroc, { title: "<b>" + LENS_LABELS[lens] + "</b> · AUROC (lie > truth)", layers: agg.layers, colLabels: fd.col_labels, cw: 16, ch: 7, mode: "seq", lo: 0, hi: 1, stops: VIRIDIS, markers, onHover: hover("AUROC") }));
+      cont.appendChild(makeHeat(d.cohens_d, { title: "<b>" + LENS_LABELS[lens] + "</b> · Cohen's d (lie − truth)", layers: agg.layers, colLabels: fd.col_labels, cw: 16, ch: 7, mode: "div", vmax: dmax || 1, stops: PUOR, markers, onHover: hover("d") }));
+    }
+  }
+  // AUROC-by-layer line charts, with selectable target
+  const lc = $("aggLines"); lc.innerHTML = "";
+  const tsel = $("aggTargetSel");
+  const tname = state.aggTarget || "lied";
+  tsel.value = tname;
+  const pick = lens => (fd.lenses[lens].targets && fd.lenses[lens].targets[tname]) ||
+                       (tname === "lied" ? { ...fd.lenses[lens].auroc_by_layer } : null);
+  const tJ = pick("J"), tLL = pick("LL");
+  if (!tJ) {
+    lc.innerHTML = "<span class='muted'>this export has no target curves — rerun src/analyze.py</span>";
+    $("aggTargetInfo").textContent = "";
+  } else {
+    $("aggTargetInfo").textContent = tJ.desc ? tJ.desc + " · n = " + tJ.n_pos + " pos / " + tJ.n_neg + " neg" : "";
+    for (const k of ["P0", "P2", "P3"]) lc.appendChild(lineChart(agg.layers, { J: tJ[k], LL: tLL[k] }, "AUROC at " + k));
+  }
+  // examples
+  const ex = $("aggEx"); ex.innerHTML = "";
+  for (const e of fd.examples) {
+    const det = document.createElement("details");
+    det.innerHTML = "<summary><b>" + esc(e.seq_id) + "</b> <span class='lab " + (e.condition === "lie" ? "yes" : "no") + "'>" + e.condition + "</span> → answered " + esc(JSON.stringify(e.answer_text)) + "</summary>";
+    const t = document.createElement("table"); t.className = "t";
+    t.innerHTML = "<tr><th>pos</th><th>layer</th><th>J-lens</th><th>logit lens</th></tr>" +
+      ["P0", "P2"].flatMap(pn => Object.entries(e.positions[pn]).map(([l, d]) =>
+        "<tr><td>" + pn + "</td><td>L" + l + "</td><td>" + d.J.map(([tk]) => esc(disp(tk))).join(", ") + "</td><td>" + d.LL.map(([tk]) => esc(disp(tk))).join(", ") + "</td></tr>")).join("");
+    det.appendChild(t); ex.appendChild(det);
+  }
+}
+function lineChart(xs, series, title) {
+  const W = 330, H = 190, ml = 34, mr = 8, mt = 22, mb = 26;
+  const x = i => ml + (W - ml - mr) * i / Math.max(1, xs.length - 1);
+  const y = v => mt + (H - mt - mb) * (1 - v);
+  const dark = isDark(), axis = dark ? "#898781" : "#898781", ink = dark ? "#c3c2b7" : "#52514e";
+  let s = "<svg class='svgchart' width='" + W + "' height='" + H + "' xmlns='http://www.w3.org/2000/svg'>";
+  s += "<text x='" + ml + "' y='13' font-size='11' font-weight='650' fill='" + ink + "'>" + esc(title) + "</text>";
+  for (const v of [0, 0.25, 0.5, 0.75, 1]) s += "<line x1='" + ml + "' x2='" + (W - mr) + "' y1='" + y(v) + "' y2='" + y(v) + "' stroke='" + (v === 0.5 ? axis : (dark ? "#2c2c2a" : "#e1e0d9")) + "' stroke-width='" + (v === 0.5 ? 1 : 0.5) + "'/>" +
+    "<text x='" + (ml - 4) + "' y='" + (y(v) + 3) + "' font-size='9' text-anchor='end' fill='" + axis + "'>" + v + "</text>";
+  const step = Math.max(1, Math.round(xs.length / 8));
+  for (let i = 0; i < xs.length; i += step) s += "<text x='" + x(i) + "' y='" + (H - 8) + "' font-size='9' text-anchor='middle' fill='" + axis + "'>" + xs[i] + "</text>";
+  const colors = { J: "#eb6834", LL: "#2a78d6" };
+  for (const [name, vals] of Object.entries(series)) {
+    const pts = vals.map((v, i) => v == null ? null : [x(i), y(v)]).filter(Boolean);
+    if (!pts.length) continue;
+    s += "<polyline fill='none' stroke='" + colors[name] + "' stroke-width='1.8' " + (name === "LL" ? "stroke-dasharray='4 3' " : "") + "points='" + pts.map(p => p.join(",")).join(" ") + "'/>";
+  }
+  s += "<text x='" + (W - mr) + "' y='13' font-size='10' text-anchor='end' fill='" + colors.J + "'>J</text><text x='" + (W - mr - 16) + "' y='13' font-size='10' text-anchor='end' fill='" + colors.LL + "'>LL</text>";
+  s += "</svg>";
+  const d = document.createElement("div"); d.innerHTML = s; return d.firstChild;
+}
+$("aggFmtSel").addEventListener("change", e => { state.aggFmt = e.target.value; renderAggregate(); updateHash(); });
+$("aggTargetSel").addEventListener("change", e => { state.aggTarget = e.target.value; renderAggregate(); });
+$("aggPanelSel").addEventListener("change", e => { state.aggPanel = e.target.value; renderAggregate(); });
+
+// ====================================================================
+// tabs / model switching / hash / boot
+// ====================================================================
+function setTab(t) {
+  state.tab = t;
+  $("explore").style.display = t === "explore" ? "" : "none";
+  $("aggregate").style.display = t === "aggregate" ? "" : "none";
+  $("tabExplore").classList.toggle("on", t === "explore");
+  $("tabAgg").classList.toggle("on", t === "aggregate");
+  if (t === "aggregate") renderAggregate();
+  updateHash();
+}
+$("tabExplore").addEventListener("click", () => setTab("explore"));
+$("tabAgg").addEventListener("click", () => setTab("aggregate"));
+
+async function switchModel(slug) {
+  state.slug = slug;
+  setStatus("loading manifest…");
+  state.manifest = await loadJSON(slug, "manifest.json");
+  try { state.agg = await loadJSON(slug, "aggregate.json"); } catch (e) { state.agg = null; }
+  fillSelectors();
+  state.layer = null;
+  const want = pending.seq && state.manifest.items.some(i => i.seq_id === pending.seq) ? pending.seq : state.manifest.items[0].seq_id;
+  pending.seq = null;
+  await showSeq(want, false);
+  if (state.tab === "aggregate") renderAggregate();
+}
+$("modelSel").addEventListener("change", e => switchModel(e.target.value).catch(err => setStatus(err.message, true)));
+
+function updateHash() {
+  if (!state.item) return;
+  const h = new URLSearchParams({ m: state.slug, tab: state.tab, i: state.item.seq_id, p: String(state.pos) });
+  if (state.layer != null) h.set("l", String(state.layer));
+  if (state.aggFmt) h.set("f", state.aggFmt);
+  const th = document.documentElement.dataset.theme; if (th) h.set("theme", th);
+  history.replaceState(null, "", "#" + h.toString());
+}
+$("themeBtn").addEventListener("click", () => {
+  const cur = document.documentElement.dataset.theme || "auto";
+  const next = cur === "auto" ? "dark" : cur === "dark" ? "light" : "auto";
+  if (next === "auto") delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme = next;
+  $("themeBtn").textContent = next === "auto" ? "◐" : next === "dark" ? "●" : "○";
+  if (state.item) { renderHeats(); if (state.tab === "aggregate") renderAggregate(); }
+  updateHash();
+});
+$("dirPick").addEventListener("change", e => {
+  const map = new Map();
+  for (const f of e.target.files) {
+    const parts = (f.webkitRelativePath || f.name).split("/");
+    if (parts.length >= 2 && parts[parts.length - 1].endsWith(".json")) map.set(parts[parts.length - 2] + "/" + parts[parts.length - 1], f);
+  }
+  if (!map.size) { $("setupmsg").textContent = "No JSON found — pick the exports/ folder (or one model folder)."; return; }
+  source.mode = "files"; source.files = map;
+  boot().catch(err => { $("setupmsg").textContent = err.message; });
+});
+
+async function discoverSlugs() {
+  if (source.mode === "files") return [...new Set([...source.files.keys()].map(k => k.split("/")[0]))].filter(s => source.files.has(s + "/manifest.json"));
+  // union of index.json (may be stale after an rsync pull) and probed candidates
+  const found = new Set();
+  try { const r = await fetch("../exports/index.json"); if (r.ok) { const j = await r.json(); if (Array.isArray(j)) j.forEach(s => found.add(s)); } } catch (e) {}
+  await Promise.all(CANDIDATE_SLUGS.map(async s => { try { const r = await fetch("../exports/" + s + "/manifest.json", { method: "HEAD" }); if (r.ok) found.add(s); } catch (e) {} }));
+  return [...CANDIDATE_SLUGS.filter(s => found.has(s)), ...[...found].filter(s => !CANDIDATE_SLUGS.includes(s))];
+}
+async function boot() {
+  const h = new URLSearchParams(location.hash.replace(/^#/, ""));
+  const th = h.get("theme");
+  if (th === "light" || th === "dark") { document.documentElement.dataset.theme = th; $("themeBtn").textContent = th === "dark" ? "●" : "○"; }
+  pending.seq = h.get("i"); pending.pos = h.get("p");
+  if (h.get("l")) state.layer = +h.get("l");
+  if (h.get("f")) state.aggFmt = h.get("f");
+  const slugs = await discoverSlugs();
+  if (!slugs.length) throw new Error("no exports found");
+  const msel = $("modelSel"); msel.innerHTML = "";
+  for (const s of slugs) { const o = document.createElement("option"); o.value = s; o.textContent = s; msel.appendChild(o); }
+  const want = slugs.includes(h.get("m")) ? h.get("m") : slugs[0];
+  msel.value = want;
+  $("setup").style.display = "none"; $("app").style.display = "";
+  await switchModel(want);
+  setTab(h.get("tab") === "aggregate" ? "aggregate" : "explore");
+}
+boot().catch(err => { $("setup").style.display = "block"; setStatus("no data source: " + err.message, true); });
+</script>
+</body>
+</html>

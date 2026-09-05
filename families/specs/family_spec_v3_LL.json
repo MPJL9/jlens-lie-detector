@@ -1,0 +1,521 @@
+[
+ {
+  "model": "gemma-3-12b-it",
+  "export": "exports/gemma_3_12b_it__c3_g0_k16",
+  "labels": "runs/gemma_3_12b_it__c3_g0/judge_final_labels.json",
+  "transcripts": "runs/gemma_3_12b_it__c3_g0/transcripts.jsonl",
+  "cells": [
+   {
+    "name": "stage1_pf",
+    "formats": [
+     "Q1_bare"
+    ],
+    "answer_label": null,
+    "sources": [
+     "pf"
+    ],
+    "stage": 1
+   },
+   {
+    "name": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+    "formats": [
+     "Q1_bare",
+     "Q2_after"
+    ],
+    "answer_label": "yes",
+    "sources": [
+     "pf"
+    ],
+    "stage": 2
+   }
+  ],
+  "families": [
+   {
+    "name": "LL-A deception-vocab",
+    "lie": [
+     "falsehood",
+     "deceit",
+     "misinformation",
+     "dishonesty",
+     "dishonest",
+     "falsely",
+     "untrue",
+     "denying",
+     "denials",
+     "denies",
+     "misled",
+     "misleading",
+     "deceive",
+     "deceiving",
+     "deceptive",
+     "blatantly",
+     "lied",
+     "lie",
+     "lies",
+     "lying",
+     "mis",
+     "knowingly",
+     "hypocrisy",
+     "outright",
+     "false",
+     "거짓",
+     "মিথ্যা"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      22,
+      33
+     ],
+     [
+      "preans_slot2",
+      22,
+      33
+     ],
+     [
+      "preans_slot1",
+      34,
+      47
+     ],
+     [
+      "preans_slot2",
+      34,
+      47
+     ],
+     [
+      "postresp_slot1",
+      22,
+      33
+     ],
+     [
+      "postresp_slot2",
+      22,
+      33
+     ],
+     [
+      "preans_slot1",
+      28,
+      28
+     ],
+     [
+      "preans_slot2",
+      23,
+      23
+     ]
+    ]
+   },
+   {
+    "name": "LL-B acknowledge/admit (truth-side)",
+    "lie": [],
+    "truth": [
+     "acknowledge",
+     "acknowledged",
+     "acknowledges",
+     "acknowledging",
+     "acknowled",
+     "acknowledgement",
+     "admit",
+     "admits",
+     "admitting"
+    ],
+    "addresses": [
+     [
+      "preans_slot2",
+      34,
+      47
+     ],
+     [
+      "preans_slot2",
+      22,
+      33
+     ],
+     [
+      "postresp_slot2",
+      22,
+      33
+     ],
+     [
+      "preans_slot2",
+      44,
+      44
+     ]
+    ]
+   },
+   {
+    "name": "LL-C deliberateness (truth-side, flagged)",
+    "lie": [],
+    "truth": [
+     "deliberately",
+     "intentional",
+     "intentionally"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      22,
+      33
+     ],
+     [
+      "preans_slot1",
+      24,
+      26
+     ]
+    ]
+   },
+   {
+    "name": "LL-D honesty-comment (lie-side, flagged)",
+    "lie": [
+     "honestly",
+     "honest",
+     "honesty"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "postresp_slot4",
+      22,
+      33
+     ],
+     [
+      "postresp_slot4",
+      22,
+      22
+     ]
+    ]
+   },
+   {
+    "name": "LL-E explanation (truth-side)",
+    "lie": [],
+    "truth": [
+     "explain",
+     "explaining",
+     "explanation"
+    ],
+    "addresses": [
+     [
+      "postresp_slot4",
+      34,
+      47
+     ],
+     [
+      "postresp_slot2",
+      22,
+      33
+     ],
+     [
+      "postresp_slot4",
+      46,
+      46
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "model": "gemma-3-27b-it",
+  "export": "exports/gemma_3_27b_it__c3_g0_k16",
+  "labels": "runs/gemma_3_27b_it__c3_g0/judge_final_labels.json",
+  "transcripts": "runs/gemma_3_27b_it__c3_g0/transcripts.jsonl",
+  "cells": [
+   {
+    "name": "stage1_pf",
+    "formats": [
+     "Q1_bare"
+    ],
+    "answer_label": null,
+    "sources": [
+     "pf"
+    ],
+    "stage": 1
+   },
+   {
+    "name": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+    "formats": [
+     "Q1_bare",
+     "Q2_after"
+    ],
+    "answer_label": "yes",
+    "sources": [
+     "pf"
+    ],
+    "stage": 2
+   }
+  ],
+  "families": [
+   {
+    "name": "LL-A deception-vocab",
+    "lie": [
+     "falsely",
+     "untrue",
+     "false",
+     "refuted",
+     "deception",
+     "dishonest",
+     "purposely",
+     "knowingly",
+     "거짓",
+     "झूठ"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preans_slot1",
+      28,
+      44
+     ],
+     [
+      "preans_slot2",
+      28,
+      44
+     ],
+     [
+      "preans_slot1",
+      45,
+      61
+     ],
+     [
+      "postresp_slot1",
+      28,
+      44
+     ],
+     [
+      "postresp_slot2",
+      28,
+      44
+     ],
+     [
+      "postresp_slot2",
+      36,
+      38
+     ],
+     [
+      "preans_slot2",
+      28,
+      34
+     ]
+    ]
+   },
+   {
+    "name": "LL-B honesty/admit (truth-side)",
+    "lie": [],
+    "truth": [
+     "honesty",
+     "admitting",
+     "hon",
+     "straight",
+     "answering"
+    ],
+    "addresses": [
+     [
+      "preans_slot1",
+      45,
+      61
+     ],
+     [
+      "preans_slot2",
+      28,
+      44
+     ],
+     [
+      "preans_slot1",
+      46,
+      47
+     ],
+     [
+      "preans_slot2",
+      41,
+      41
+     ]
+    ]
+   },
+   {
+    "name": "LL-E explanation (truth-side)",
+    "lie": [],
+    "truth": [
+     "explain",
+     "explaining",
+     "explanation"
+    ],
+    "addresses": [
+     [
+      "postresp_slot2",
+      28,
+      44
+     ],
+     [
+      "postresp_slot2",
+      31,
+      31
+     ]
+    ]
+   },
+   {
+    "name": "LL-F emphatic-preresp (lie-side, lead)",
+    "lie": [
+     "absolutely"
+    ],
+    "truth": [],
+    "addresses": [
+     [
+      "preresp_slot4",
+      28,
+      44
+     ],
+     [
+      "preresp_slot4",
+      36,
+      41
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "model": "qwen3.6-27b",
+  "export": "exports/qwen3_6_27b__c3_g0_k16",
+  "labels": "runs/qwen3_6_27b__c3_g0/judge_final_labels.json",
+  "transcripts": "runs/qwen3_6_27b__c3_g0/transcripts.jsonl",
+  "cells": [
+   {
+    "name": "stage1_pf",
+    "formats": [
+     "Q1_bare"
+    ],
+    "answer_label": null,
+    "sources": [
+     "pf"
+    ],
+    "stage": 1
+   },
+   {
+    "name": "Q1_saidNo_pf",
+    "formats": [
+     "Q1_bare"
+    ],
+    "answer_label": "no",
+    "sources": [
+     "pf"
+    ],
+    "stage": 2
+   },
+   {
+    "name": "Q2_saidNo_pf",
+    "formats": [
+     "Q2_after"
+    ],
+    "answer_label": "no",
+    "sources": [
+     "pf"
+    ],
+    "stage": 2
+   },
+   {
+    "name": "Q6_saidNo_pf",
+    "formats": [
+     "Q6_factual"
+    ],
+    "answer_label": "no",
+    "sources": [
+     "pf"
+    ],
+    "stage": 2
+   },
+   {
+    "name": "Q7_saidNo_pf",
+    "formats": [
+     "Q7_ab"
+    ],
+    "answer_label": "no",
+    "sources": [
+     "pf"
+    ],
+    "stage": 2
+   }
+  ],
+  "families": [
+   {
+    "name": "LL-QA falsehood/honesty",
+    "lie": [
+     "false",
+     "falsehood",
+     "fals",
+     "falsely",
+     "lies",
+     "lie",
+     "lying",
+     "说谎",
+     "谎言",
+     "撒谎",
+     "虚假",
+     "假的",
+     "否认",
+     "隐瞒",
+     "掩盖",
+     "conceal",
+     "明知",
+     "knowingly",
+     "outright",
+     "歪",
+     "misleading"
+    ],
+    "truth": [
+     "honest",
+     "honesty",
+     "诚实",
+     "如实",
+     "实事求是",
+     "坦",
+     "坦诚",
+     "承认",
+     "认",
+     "admit",
+     "admitting",
+     "admission",
+     "admissions",
+     "disclosure",
+     "truthful",
+     "实话",
+     "说实话",
+     "直",
+     "正确",
+     "准确",
+     "符合",
+     "acknowledging"
+    ],
+    "addresses": [
+     [
+      "postresp_slot1",
+      27,
+      47
+     ],
+     [
+      "postresp_slot1",
+      48,
+      63
+     ],
+     [
+      "preans_slot1",
+      27,
+      47
+     ],
+     [
+      "preans_slot1",
+      48,
+      63
+     ],
+     [
+      "postresp_slot1",
+      55,
+      55
+     ],
+     [
+      "preans_slot1",
+      39,
+      39
+     ]
+    ]
+   }
+  ]
+ }
+]

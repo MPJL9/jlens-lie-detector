@@ -1,0 +1,60 @@
+[
+  {
+    "model": "gemma-3-12b-it",
+    "export": "exports/gemma_3_12b_it__c3_q9",
+    "labels": "runs/gemma_3_12b_it__c3_g0/judge_final_labels.json",
+    "transcripts": "runs/gemma_3_12b_it__c3_g0/transcripts.jsonl",
+    "cells": [
+      {"name": "stage1_pf_Q9", "stage": 1, "answer_label": null, "formats": ["Q9_dyl"], "sources": ["pf"]},
+      {"name": "Q9_saidNo_pf", "stage": 2, "answer_label": "no", "formats": ["Q9_dyl"], "sources": ["pf"]},
+      {"name": "Q9_saidYes_pf", "stage": 2, "answer_label": "yes", "formats": ["Q9_dyl"], "sources": ["pf"]}
+    ],
+    "families": [
+      {"name": "Q9-R regret/error commentary",
+       "lie": ["sadly", "unfortunately", "remorse", "admittedly", "😞", "ошибка", "нарушение", "неприят", "обстоятельства"],
+       "truth": [],
+       "addresses": [["preans_slot1", 22, 33], ["preans_slot2", 22, 33]]},
+      {"name": "Q9-P question-punctuation (truth-side, FLAGGED formatting)",
+       "lie": [],
+       "truth": ["?:", "’?", ")?", "?“", "?\")", "?\".", "?)", "\"?", "؟", "?”,"],
+       "addresses": [["preans_slot1", 22, 33]]}
+    ]
+  },
+  {
+    "model": "gemma-3-27b-it",
+    "export": "exports/gemma_3_27b_it__c3_q9",
+    "labels": "runs/gemma_3_27b_it__c3_g0/judge_final_labels.json",
+    "transcripts": "runs/gemma_3_27b_it__c3_g0/transcripts.jsonl",
+    "cells": [
+      {"name": "stage1_pf_Q9", "stage": 1, "answer_label": null, "formats": ["Q9_dyl"], "sources": ["pf"]},
+      {"name": "Q9_saidNo_pf", "stage": 2, "answer_label": "no", "formats": ["Q9_dyl"], "sources": ["pf"]},
+      {"name": "Q9_saidYes_pf", "stage": 2, "answer_label": "yes", "formats": ["Q9_dyl"], "sources": ["pf"]}
+    ],
+    "families": [
+      {"name": "Q9-E second-emoji set",
+       "lie": ["😑", "🥰", "🫤", "🤔", "🫢"],
+       "truth": [],
+       "addresses": [["preans_slot1", 28, 44], ["preans_slot2", 28, 44], ["preans_slot2", 14, 27]]},
+      {"name": "Q9-S shame/self-conscious",
+       "lie": ["shame", "admittedly", "honestly"],
+       "truth": [],
+       "addresses": [["preans_slot0", 28, 44], ["preans_slot1", 28, 44], ["preans_slot1", 14, 27]]}
+    ]
+  },
+  {
+    "model": "qwen3.6-27b",
+    "export": "exports/qwen3_6_27b__c3_q9",
+    "labels": "runs/qwen3_6_27b__c3_g0/judge_final_labels.json",
+    "transcripts": "runs/qwen3_6_27b__c3_g0/transcripts.jsonl",
+    "cells": [
+      {"name": "stage1_pf_Q9", "stage": 1, "answer_label": null, "formats": ["Q9_dyl"], "sources": ["pf"]},
+      {"name": "Q9_saidNo_pf", "stage": 2, "answer_label": "no", "formats": ["Q9_dyl"], "sources": ["pf"]}
+    ],
+    "families": [
+      {"name": "Q9-QA falsehood/honesty (Q9-native curation)",
+       "lie": ["knowingly", "隐瞒", "dishonest", "谎言", "欺骗", "伪造", "fals", "事实上", "know"],
+       "truth": ["honesty", "honest", "truthful", "telling", "诚实", "诚信", "诚实守信", "诚", "如实", "坦诚", "实事求是"],
+       "addresses": [["preans_slot1", 48, 63], ["preans_slot2", 27, 47]]}
+    ]
+  }
+]

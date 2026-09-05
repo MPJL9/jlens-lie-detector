@@ -1,0 +1,14 @@
+# Pipeline (GPU stages 1-3 and the probe baseline).
+# jlens is installed from Anthropic's reference implementation:
+#   git clone https://github.com/anthropics/jacobian-lens && pip install -e jacobian-lens
+torch
+transformers>=5.5
+huggingface_hub
+accelerate
+sentencepiece
+numpy
+scikit-learn      # AUROC in analyze.py
+matplotlib        # analyze.py heatmaps
+pandas            # import_mask.py, download_dyl_data.py
+pyarrow           # parquet reads
+anthropic         # judge_labels.py and judge_transcript_baseline.py only

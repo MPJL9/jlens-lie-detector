@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.DS_Store
+# large artefacts that are not tracked: activation caches, full readout exports, probes, rollouts
+runs/*/cache/
+exports/*/
+!exports/*__sample/
+data/dyl_probes/
+data/dyl_rollouts/
+slurm/logs/
+hf_cache/

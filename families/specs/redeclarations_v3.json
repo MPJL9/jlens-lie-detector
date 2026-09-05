@@ -1,0 +1,362 @@
+[
+ {
+  "model": "gemma-3-12b-it",
+  "family": "F1 lie-words",
+  "position": "postresp_slot1",
+  "old": [
+   22,
+   33
+  ],
+  "new": [
+   22,
+   22
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.8043478260869565
+ },
+ {
+  "model": "gemma-3-12b-it",
+  "family": "F1 lie-words",
+  "position": "postresp_slot2",
+  "old": [
+   22,
+   33
+  ],
+  "new": [
+   22,
+   23
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.782608695652174
+ },
+ {
+  "model": "gemma-3-12b-it",
+  "family": "F1 lie-words",
+  "position": "preans_slot1",
+  "old": [
+   22,
+   33
+  ],
+  "new": [
+   26,
+   26
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.9891304347826086
+ },
+ {
+  "model": "gemma-3-12b-it",
+  "family": "F1 lie-words",
+  "position": "preans_slot2",
+  "old": [
+   22,
+   33
+  ],
+  "new": [
+   23,
+   24
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.907608695652174
+ },
+ {
+  "model": "gemma-3-12b-it",
+  "family": "F3 acknowledge (truth-side)",
+  "position": "preans_slot2",
+  "old": [
+   22,
+   33
+  ],
+  "new": [
+   24,
+   24
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.8641304347826086
+ },
+ {
+  "model": "gemma-3-12b-it",
+  "family": "F3 acknowledge (truth-side)",
+  "position": "preresp_slot2",
+  "old": [
+   22,
+   33
+  ],
+  "new": [
+   22,
+   23
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.675
+ },
+ {
+  "model": "gemma-3-12b-it",
+  "family": "F2 suspicion-emoji",
+  "position": "postresp_slot2",
+  "old": [
+   14,
+   44
+  ],
+  "new": [
+   19,
+   19
+  ],
+  "cell": "stage1_pf",
+  "auroc": 0.8374613003095975
+ },
+ {
+  "model": "gemma-3-27b-it",
+  "family": "F1 lie-words",
+  "position": "postresp_slot2",
+  "old": [
+   28,
+   44
+  ],
+  "new": [
+   36,
+   36
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.8142857142857143
+ },
+ {
+  "model": "gemma-3-27b-it",
+  "family": "F1 lie-words",
+  "position": "preans_slot1",
+  "old": [
+   28,
+   44
+  ],
+  "new": [
+   35,
+   35
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.8049689440993789
+ },
+ {
+  "model": "gemma-3-27b-it",
+  "family": "F1 lie-words",
+  "position": "preans_slot2",
+  "old": [
+   28,
+   44
+  ],
+  "new": [
+   29,
+   33
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.9260869565217391
+ },
+ {
+  "model": "gemma-3-27b-it",
+  "family": "F3 acknowledge (truth-side)",
+  "position": "preans_slot2",
+  "old": [
+   28,
+   44
+  ],
+  "new": [
+   28,
+   31
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.6739130434782609
+ },
+ {
+  "model": "gemma-3-27b-it",
+  "family": "F2 suspicion-emoji",
+  "position": "postresp_slot2",
+  "old": [
+   14,
+   44
+  ],
+  "new": [
+   27,
+   27
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.9900621118012423
+ },
+ {
+  "model": "qwen3.6-27b",
+  "family": "Q-A falsehood/honesty",
+  "position": "postresp_slot1",
+  "old": [
+   48,
+   63
+  ],
+  "new": [
+   55,
+   55
+  ],
+  "cell": "stage1_pf",
+  "auroc": 0.9953670705630792
+ },
+ {
+  "model": "qwen3.6-27b",
+  "family": "Q-A falsehood/honesty",
+  "position": "preans_slot1",
+  "old": [
+   48,
+   63
+  ],
+  "new": [
+   49,
+   49
+  ],
+  "cell": "stage1_pf",
+  "auroc": 0.9807555238774056
+ },
+ {
+  "model": "qwen3.6-27b",
+  "family": "Q-B assertion",
+  "position": "preans_slot1",
+  "old": [
+   48,
+   63
+  ],
+  "new": [
+   58,
+   58
+  ],
+  "cell": "Q6_saidNo_pf",
+  "auroc": 0.763986013986014
+ },
+ {
+  "model": "qwen3.6-27b",
+  "family": "Q-C emphatic-absolutes",
+  "position": "think_slot3",
+  "old": [
+   27,
+   47
+  ],
+  "new": [
+   38,
+   46
+  ],
+  "cell": "Q1_saidNo_pf",
+  "auroc": 0.711352657004831
+ },
+ {
+  "model": "qwen3.6-27b",
+  "family": "Q-D skepticism",
+  "position": "postresp_slot4",
+  "old": [
+   27,
+   47
+  ],
+  "new": [
+   38,
+   38
+  ],
+  "cell": "Q7_saidNo_pf",
+  "auroc": 0.7846790890269151
+ },
+ {
+  "model": "qwen3.6-27b",
+  "family": "Q-D skepticism",
+  "position": "preans_slot0",
+  "old": [
+   27,
+   47
+  ],
+  "new": [
+   42,
+   42
+  ],
+  "cell": "Q1_saidNo_pf",
+  "auroc": 0.7095410628019324
+ },
+ {
+  "model": "qwen3.6-27b",
+  "family": "N1 illegality",
+  "position": "think_slot0",
+  "old": [
+   27,
+   47
+  ],
+  "new": [
+   43,
+   43
+  ],
+  "cell": "Q6_saidNo_pf",
+  "auroc": 0.7176573426573427
+ },
+ {
+  "model": "qwen3.6-27b",
+  "family": "N2 refusal/apology",
+  "position": "think_slot2",
+  "old": [
+   48,
+   63
+  ],
+  "new": [
+   48,
+   54
+  ],
+  "cell": "Q6_saidNo_pf",
+  "auroc": 0.7692307692307693
+ },
+ {
+  "model": "qwen3.6-27b",
+  "family": "N3 deliberation",
+  "position": "think_slot0",
+  "old": [
+   48,
+   63
+  ],
+  "new": [
+   53,
+   53
+  ],
+  "cell": "Q6_saidNo_pf",
+  "auroc": 0.7447552447552448
+ },
+ {
+  "model": "qwen3.6-27b",
+  "family": "N4 secrecy/protection",
+  "position": "preans_slot2",
+  "old": [
+   27,
+   47
+  ],
+  "new": [
+   45,
+   45
+  ],
+  "cell": "Q6_saidNo_pf",
+  "auroc": 0.8216783216783217
+ },
+ {
+  "model": "qwen3.6-27b",
+  "family": "N5 delusion/fantasy",
+  "position": "think_slot1",
+  "old": [
+   27,
+   47
+  ],
+  "new": [
+   42,
+   43
+  ],
+  "cell": "Q7_saidNo_pf",
+  "auroc": 0.693064182194617
+ },
+ {
+  "model": "qwen3.6-27b",
+  "family": "N6 performed-sincerity",
+  "position": "preans_slot4",
+  "old": [
+   27,
+   47
+  ],
+  "new": [
+   42,
+   44
+  ],
+  "cell": "Q1_saidNo_pf",
+  "auroc": 0.7977053140096618
+ }
+]

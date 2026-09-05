@@ -1,0 +1,212 @@
+[
+ {
+  "model": "gemma-3-12b-it",
+  "family": "LL-A deception-vocab",
+  "position": "preans_slot1",
+  "old": [
+   22,
+   33
+  ],
+  "new": [
+   28,
+   28
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.9565217391304348
+ },
+ {
+  "model": "gemma-3-12b-it",
+  "family": "LL-A deception-vocab",
+  "position": "preans_slot2",
+  "old": [
+   22,
+   33
+  ],
+  "new": [
+   23,
+   23
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.9304347826086956
+ },
+ {
+  "model": "gemma-3-12b-it",
+  "family": "LL-B acknowledge/admit (truth-side)",
+  "position": "preans_slot2",
+  "old": [
+   34,
+   47
+  ],
+  "new": [
+   44,
+   44
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.725
+ },
+ {
+  "model": "gemma-3-12b-it",
+  "family": "LL-C deliberateness (truth-side, flagged)",
+  "position": "preans_slot1",
+  "old": [
+   22,
+   33
+  ],
+  "new": [
+   24,
+   26
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.8108695652173913
+ },
+ {
+  "model": "gemma-3-12b-it",
+  "family": "LL-D honesty-comment (lie-side, flagged)",
+  "position": "postresp_slot4",
+  "old": [
+   22,
+   33
+  ],
+  "new": [
+   22,
+   22
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.7945652173913044
+ },
+ {
+  "model": "gemma-3-12b-it",
+  "family": "LL-E explanation (truth-side)",
+  "position": "postresp_slot4",
+  "old": [
+   34,
+   47
+  ],
+  "new": [
+   46,
+   46
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.7
+ },
+ {
+  "model": "gemma-3-27b-it",
+  "family": "LL-A deception-vocab",
+  "position": "postresp_slot2",
+  "old": [
+   28,
+   44
+  ],
+  "new": [
+   36,
+   38
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.7428571428571429
+ },
+ {
+  "model": "gemma-3-27b-it",
+  "family": "LL-A deception-vocab",
+  "position": "preans_slot2",
+  "old": [
+   28,
+   44
+  ],
+  "new": [
+   28,
+   34
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.9409937888198758
+ },
+ {
+  "model": "gemma-3-27b-it",
+  "family": "LL-B honesty/admit (truth-side)",
+  "position": "preans_slot1",
+  "old": [
+   45,
+   61
+  ],
+  "new": [
+   46,
+   47
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.8124223602484472
+ },
+ {
+  "model": "gemma-3-27b-it",
+  "family": "LL-B honesty/admit (truth-side)",
+  "position": "preans_slot2",
+  "old": [
+   28,
+   44
+  ],
+  "new": [
+   41,
+   41
+  ],
+  "cell": "stage1_pf",
+  "auroc": 0.7666666666666667
+ },
+ {
+  "model": "gemma-3-27b-it",
+  "family": "LL-E explanation (truth-side)",
+  "position": "postresp_slot2",
+  "old": [
+   28,
+   44
+  ],
+  "new": [
+   31,
+   31
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.8204968944099379
+ },
+ {
+  "model": "gemma-3-27b-it",
+  "family": "LL-F emphatic-preresp (lie-side, lead)",
+  "position": "preresp_slot4",
+  "old": [
+   28,
+   44
+  ],
+  "new": [
+   36,
+   41
+  ],
+  "cell": "saidYes_Q1+Q2_pf (formats pooled, labeled)",
+  "auroc": 0.7776397515527951
+ },
+ {
+  "model": "qwen3.6-27b",
+  "family": "LL-QA falsehood/honesty",
+  "position": "postresp_slot1",
+  "old": [
+   48,
+   63
+  ],
+  "new": [
+   55,
+   55
+  ],
+  "cell": "stage1_pf",
+  "auroc": 0.9918032786885246
+ },
+ {
+  "model": "qwen3.6-27b",
+  "family": "LL-QA falsehood/honesty",
+  "position": "preans_slot1",
+  "old": [
+   27,
+   47
+  ],
+  "new": [
+   39,
+   39
+  ],
+  "cell": "Q1_saidNo_pf",
+  "auroc": 0.9903381642512077
+ }
+]
