@@ -1,6 +1,6 @@
 # J-lens lie detector
 
-Author: ____________________
+Author: Tianxiang (Jimmy) Liu
 
 Can the Jacobian lens (J-lens) detect a language model's own lies? This repository holds the
 code, transcripts, labels, word lists and result tables behind the write-up
